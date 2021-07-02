@@ -1,0 +1,19 @@
+:root {
+	--minFontSize: 16px;
+	--maxFontSize: 48px;
+	--scaler: 7vw;
+}
+
+html,
+body {
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	// fluid text
+	font-size: clamp(var(--minFontSize), var(--scaler), var(--maxFontSize));
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}

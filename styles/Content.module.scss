@@ -1,0 +1,32 @@
+.container {
+	margin: 0.5rem 0;
+
+	display: grid;
+	row-gap: 25px;
+	grid-template-columns: repeat(1, 85%);
+	justify-content: space-around;
+
+	@media screen and (min-width: 468px) and (max-width: 767px) {
+		grid-template-columns: repeat(2, 40%);
+	}
+	@media screen and (min-width: 768px) {
+		grid-template-columns: repeat(4, 23%);
+	}
+}
+.card {
+	background: white;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 16px;
+	.cardImage {
+		width: 100%;
+	}
+	.cardInfo {
+		width: 100%;
+		font-size: 0.7rem;
+		text-align: center;
+	}
+}
