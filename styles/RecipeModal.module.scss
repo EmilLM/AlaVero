@@ -1,0 +1,45 @@
+.modal {
+	width: 90%;
+	height: 90%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	background: rgb(227, 198, 255);
+	position: absolute;
+	top: 5%;
+	right: 5%;
+	z-index: 99;
+	border-radius: 1em;
+}
+
+.recipe {
+	max-width: 80%;
+	height: 70%;
+	border: 1px solid black;
+	h2 {
+		text-align: center;
+	}
+}
+.ingredients {
+	font-size: 14px;
+}
+
+.preparation {
+	font-size: 16px;
+}
+
+.close {
+	border: none;
+	background: none;
+	font-size: 1em;
+	font-weight: bold;
+	position: absolute;
+	top: 3%;
+	right: 3%;
+	color: navy;
+	&:hover {
+		color: black;
+	}
+}
