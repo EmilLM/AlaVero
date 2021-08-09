@@ -1,0 +1,23 @@
+.container {
+	margin: 1em auto;
+	width: 90%;
+	min-width: 350px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 0;
+	position: relative;
+
+	.back {
+		font-size: 0.9em;
+		text-decoration: none;
+		position: absolute;
+		top: 0;
+		right: 5%;
+		color: white;
+		&:hover {
+			color: navy;
+		}
+	}
+}

@@ -1,11 +1,16 @@
 import styles from '../styles/Nav.module.scss';
 import NavButton from './general/NavButton';
+import Link from 'next/link';
 
 const Nav = () => {
-	const buttons = ['Toate', 'Favorite', 'Prajituri', 'Mancare'];
 	return (
 		<nav className={styles.container}>
-			{buttons.map((el, index) => <NavButton name={el} key={index} />)}
+			<NavButton name={'Toate'} />
+			<NavButton name={'Favorite'} />
+			<NavButton name={'Prajituri'} />
+			<Link href='/newRecipe'>
+				<a className={styles.navButton}>Adauga</a>
+			</Link>
 		</nav>
 	);
 };

@@ -10,6 +10,7 @@ body {
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 	// fluid text
 	font-size: clamp(var(--minFontSize), var(--scaler), var(--maxFontSize));
+	background: rgb(25, 100, 110);
 }
 
 * {

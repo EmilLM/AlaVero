@@ -12,7 +12,7 @@
 .navButton {
 	border-radius: 10px;
 	padding: 0.5rem 1rem;
-	background: rgb(196, 196, 255);
+	background: rgb(98, 230, 253);
 	color: navy;
 	font-weight: bold;
 	font-size: 0.6rem;
@@ -21,8 +21,10 @@
 	align-items: center;
 	cursor: pointer;
 	z-index: 99;
+	box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 7px 5px rgba(0, 0, 0, 0.22);
+	text-decoration: none;
 	&:hover {
 		background: navy;
-		color: rgb(196, 196, 255);
+		color: rgb(98, 230, 253);
 	}
 }
