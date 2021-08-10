@@ -1,13 +1,16 @@
 .formContainer {
 	min-height: 80vh;
 	width: 70%;
+	min-width: 70vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	label {
 		display: flex;
 		flex-direction: column;
-		font-size: 0.8em;
+		font-size: 0.5em;
+		text-transform: uppercase;
+		font-weight: bold;
 	}
 	input {
 		height: 50px;
@@ -24,6 +27,10 @@
 		&:focus {
 			border: 3px solid #5551ff;
 		}
+		&::first-letter {
+			text-transform: capitalize;
+			color: yellow;
+		}
 	}
 	textarea {
 		height: 120px;
@@ -32,22 +39,20 @@
 		font-size: 0.8em;
 		resize: none;
 		border-radius: 5px;
-		line-height: normal;
-		color: #282828;
 		user-select: auto;
 		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+		display: block;
 		&:focus {
 			border: 3px solid #5551ff;
 		}
 	}
+
 	button {
 		margin-top: 30px;
 		font-size: 0.6em;
 		width: 50%;
 		height: 50px;
-
 		align-self: center;
-
 		outline: 0;
 		cursor: pointer;
 		border: none;
@@ -56,11 +61,10 @@
 		background-color: #0070f3;
 		color: white;
 		font-weight: 400;
-
 		box-shadow: 0 4px 14px 0 rgb(0 118 255 / 39%);
 		transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-		:hover {
-			background: rgba(0, 118, 255, 0.9);
+		&:hover {
+			background: rgba(0, 91, 196, 0.9);
 			box-shadow: 0 6px 20px rgb(0 118 255 / 23%);
 		}
 	}

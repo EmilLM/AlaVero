@@ -24,6 +24,8 @@
 	}
 	h6 {
 		padding: 0.3em 0;
+		font-size: 0.6em;
+		font-weight: bold;
 	}
 }
 .ingredientsContainer {
@@ -31,9 +33,15 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	.ingredients {
-		display: inline-block;
 		padding: 0.1em;
 		font-size: 0.5em;
+		cursor: pointer;
+		user-select: none;
+	}
+	.checkbox {
+		width: 20px;
+		height: 20px;
+		margin-right: 5px;
 	}
 }
 .prepContainer {
@@ -65,6 +73,61 @@
 	color: navy;
 	cursor: pointer;
 	&:hover {
-		color: black;
+		color: rgb(25, 100, 110);
+	}
+}
+
+.menuButton {
+	border: none;
+	background: none;
+	font-size: 1em;
+	font-weight: bold;
+	position: absolute;
+	top: 3%;
+	left: 3%;
+	color: navy;
+	cursor: pointer;
+	svg {
+		&:hover {
+			color: rgb(25, 100, 110);
+		}
+	}
+
+	.menu {
+		position: absolute;
+		z-index: 99;
+		min-width: 200px;
+		background: white;
+		border-radius: 5px;
+		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+		padding: 3px 0 3px 0;
+		ul {
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			.midOption {
+				border-top: 1px solid lightblue;
+				border-bottom: 1px solid lightblue;
+			}
+			li {
+				width: 100%;
+				text-align: left;
+				font-size: 0.5em;
+				&:hover {
+					background: rgb(25, 100, 110);
+					color: white;
+				}
+				a {
+					display: flex;
+					align-items: center;
+
+					padding: 8px 10px;
+					svg {
+						margin-right: 10px;
+					}
+				}
+			}
+		}
 	}
 }

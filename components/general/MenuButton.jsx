@@ -1,0 +1,27 @@
+import { useState, useEffect, useRef } from 'react';
+
+import styles from '../../styles/RecipeModal.module.scss';
+import { FiMenu } from 'react-icons/fi';
+import { useClickOutside } from '../../utils/hooks';
+
+const MenuButton = (props) => {
+	const [showMenu, setShowMenu] = useState(false);
+
+	function handleClick() {
+		setShowMenu((prev) => !prev);
+	}
+
+
+
+	
+	const menuRef = useClickOutside(() => setShowMenu(false));
+
+	return (
+		<button className={styles.menuButton} onClick={handleClick} ref={menuRef}>
+			<FiMenu />
+			{showMenu && props.children}
+		</button>
+	);
+};
+
+export default MenuButton;

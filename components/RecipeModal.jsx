@@ -1,37 +1,31 @@
+import { useState } from 'react';
+
 import styles from '../styles/RecipeModal.module.scss';
 import { RiCloseCircleLine } from 'react-icons/ri';
+import MenuButton from './general/MenuButton';
+import ModalMenu from './ModalMenu';
+import RecipeContent from './RecipeContent';
 
 const RecipeModal = ({ handleClick, recipe }) => {
-	const ingredients = recipe.ingredients.map((ingredient, index) => (
-		<span className={styles.ingredients} key={index}>
-			{ingredient},
-		</span>
-	));
+	const [editRecipe, setEditRecipe] = useState(false);
 
-	const preparationSteps = recipe.preparation.map((step, index) => {
-		return (
-			<li className={styles.steps} key={index}>
-				{step}
-			</li>
-		);
-	});
+	function handleEditRecipe() {
+		setEditRecipe((prevState) => !prevState);
+		console.log(editRecipe);
+	}
+
+
 
 	return (
 		<div className={styles.modal}>
-			<div className={styles.recipe}>
-				<h2>{recipe.name}</h2>
-				<h6>Ingrediente:</h6>
-				<div className={styles.ingredientsContainer}>{ingredients}</div>
-				<h6>Preparare:</h6>
+			<MenuButton>
+				<ModalMenu handleEditRecipe={handleEditRecipe} />
+			</MenuButton>
 
-				<div className={styles.prepContainer}>
-					<ol>{preparationSteps}</ol>
-				</div>
-				<h6>Gatire:</h6>
-				<div className={styles.cooking}>{recipe.cooking}</div>
-			</div>
+			<RecipeContent editRecipe={editRecipe} recipe={recipe} />
+
 			<button onClick={handleClick} className={styles.close}>
-				<RiCloseCircleLine/>
+				<RiCloseCircleLine />
 			</button>
 		</div>
 	);
