@@ -1,8 +1,9 @@
 import Head from 'next/head';
-import styles from '../styles/NewRecipe.module.scss';
-import Link from 'next/link';
-import AddRecipe from '../components/newRecipe.js/AddRecipe';
-import { RiArrowGoBackFill } from 'react-icons/ri';
+import RecipeForm from '../components/newRecipe.js/RecipeForm';
+import styles from '../styles/Layout.module.scss';
+
+import HomeButton from '../components/general/HomeButton';
+import Layout from '../components/general/Layout';
 
 export default function NewRecipe() {
 	return (
@@ -10,17 +11,11 @@ export default function NewRecipe() {
 			<Head>
 				<title>A la Vero Cookbook</title>
 			</Head>
-			<div className={styles.container}>
-				<h4>Reteta noua:</h4>
-
-				<Link href='/'>
-					<a className={styles.back}>
-						<RiArrowGoBackFill />
-					</a>
-				</Link>
-
-				<AddRecipe />
-			</div>
+			<Layout>
+				<h4 className={styles.newRecipeHeader}>Reteta Noua: </h4>
+				<HomeButton />
+				<RecipeForm />
+			</Layout>
 		</>
 	);
 }

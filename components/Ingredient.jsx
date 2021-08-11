@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from '../styles/RecipeModal.module.scss';
+import styles from '../styles/RecipeContent.module.scss';
 
 const Ingredient = ({ ingredient }) => {
 	const [checked, setChecked] = useState(false);

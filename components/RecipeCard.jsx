@@ -1,17 +1,12 @@
-import styles from '../styles/Recipes.module.scss';
+import styles from '../styles/RecipeCard.module.scss';
 import Image from 'next/image';
 import ph from '../public/ph.jpg';
 import { useState } from 'react';
-import RecipeModal from './RecipeModal';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
+import Link from 'next/link';
 
 const RecipeCard = ({ recipe }) => {
-	const [showModal, setShowModal] = useState(false);
 	const [favorite, setFavorite] = useState(false);
-
-	function handleClick() {
-		setShowModal((prevState) => !prevState);
-	}
 
 	function handleFavorite(e) {
 		e.stopPropagation();
@@ -19,8 +14,8 @@ const RecipeCard = ({ recipe }) => {
 	}
 
 	return (
-		<>
-			<div className={styles.card} onClick={handleClick}>
+		<Link href={`/recipes/${encodeURIComponent(recipe.name)}`}>
+			<div className={styles.card}>
 				<div className={styles.cardImage}>
 					<Image src={ph} alt='ph' layout='responsive' />
 				</div>
@@ -31,8 +26,7 @@ const RecipeCard = ({ recipe }) => {
 					</button>
 				</div>
 			</div>
-			{showModal && <RecipeModal handleClick={handleClick} recipe={recipe} />}
-		</>
+		</Link>
 	);
 };
 

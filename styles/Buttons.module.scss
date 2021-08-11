@@ -1,0 +1,80 @@
+.backButton {
+	font-size: 0.9em;
+	text-decoration: none;
+	position: fixed;
+	top: 20px;
+	right: 70px;
+	color: rgb(25, 100, 110);
+	z-index: 99;
+	&:hover {
+		color: white;
+	}
+	&::before {
+		position: absolute;
+		content: '';
+		top: -5px;
+		right: -6px;
+		width: 60px;
+		height: 60px;
+		border-radius: 50%;
+		background: rgb(98, 230, 253);
+		z-index: -1;
+	}
+}
+
+.menuButton {
+	border: none;
+	background: none;
+	font-size: 1em;
+	font-weight: bold;
+	position: absolute;
+	top: 20px;
+	left: 50px;
+	cursor: pointer;
+	color: white;
+
+	svg {
+		&:hover {
+			color: rgb(98, 230, 253);
+		}
+	}
+}
+
+.menu {
+	position: absolute;
+	z-index: 99;
+	min-width: 200px;
+	background: white;
+	border-radius: 5px;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	padding: 3px 0 3px 0;
+	ul {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		.midOption {
+			border-top: 1px solid lightblue;
+			border-bottom: 1px solid lightblue;
+		}
+		li {
+			width: 100%;
+			text-align: left;
+			font-size: 0.5em;
+			color: navy;
+			&:hover {
+				background: rgb(98, 230, 253);
+			}
+			a {
+				display: flex;
+				align-items: center;
+
+				padding: 8px 10px;
+				svg {
+					color: navy;
+					margin-right: 10px;
+				}
+			}
+		}
+	}
+}

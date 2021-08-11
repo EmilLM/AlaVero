@@ -1,16 +1,18 @@
-import styles from '../styles/RecipeModal.module.scss';
+import styles from '../../styles/Buttons.module.scss';
 import { AiFillEdit, AiFillDelete, AiFillCopy } from 'react-icons/ai';
 
-const ModalMenu = ({handleEditRecipe}) => {
-
-
+const RecipeMenu = ({ handleEditRecipe, editRecipe }) => {
+	const copyToClipboard = () => {
+		navigator.clipboard.writeText(window.location.href);
+		alert('Link-ul catre aceasta reteta a fost copiat');
+	};
 	return (
 		<div className={styles.menu}>
 			<ul>
 				<li>
 					<a onClick={handleEditRecipe}>
 						<AiFillEdit />
-						Editeaza
+						{editRecipe ? 'Renunta' : 'Editeaza'}
 					</a>
 				</li>
 				<li className={styles.midOption}>
@@ -20,7 +22,7 @@ const ModalMenu = ({handleEditRecipe}) => {
 					</a>
 				</li>
 				<li>
-					<a>
+					<a onClick={copyToClipboard}>
 						<AiFillCopy />
 						Copiaza
 					</a>
@@ -30,4 +32,4 @@ const ModalMenu = ({handleEditRecipe}) => {
 	);
 };
 
-export default ModalMenu;
+export default RecipeMenu;

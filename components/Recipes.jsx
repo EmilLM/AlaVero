@@ -1,4 +1,4 @@
-import styles from '../styles/Recipes.module.scss';
+import styles from '../styles/RecipeCard.module.scss';
 import RecipeCard from './RecipeCard';
 import { useState } from 'react';
 import data from '../data';

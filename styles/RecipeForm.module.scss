@@ -5,12 +5,14 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+	margin: 0 auto;
 	label {
 		display: flex;
 		flex-direction: column;
 		font-size: 0.5em;
 		text-transform: uppercase;
 		font-weight: bold;
+		color: navy;
 	}
 	input {
 		height: 50px;
@@ -27,10 +29,7 @@
 		&:focus {
 			border: 3px solid #5551ff;
 		}
-		&::first-letter {
-			text-transform: capitalize;
-			color: yellow;
-		}
+		
 	}
 	textarea {
 		height: 120px;

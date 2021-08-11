@@ -1,93 +1,23 @@
 .container {
 	display: grid;
-	grid-template-columns: auto;
-	grid-template-rows: auto;
-	align-content: space-between;
+	align-content: space-around;
 	background: rgb(25, 100, 110);
 	min-height: 100vh;
 	height: auto;
 	@media screen and (min-width: 768px) {
 		padding: 0 1rem;
 	}
+}
 
-	// background-image: radial-gradient(
-	// 		circle at 10% 8%,
-	// 		rgba(255, 255, 255, 0.03) 0%,
-	// 		rgba(255, 255, 255, 0.03) 8%,
-	// 		transparent 8%,
-	// 		transparent 92%
-	// 	),
-	// 	radial-gradient(
-	// 		circle at 87% 45%,
-	// 		rgba(255, 255, 255, 0.03) 0%,
-	// 		rgba(255, 255, 255, 0.03) 8%,
-	// 		transparent 8%,
-	// 		transparent 92%
-	// 	),
-	// 	radial-gradient(
-	// 		circle at 9% 67%,
-	// 		rgba(255, 255, 255, 0.03) 0%,
-	// 		rgba(255, 255, 255, 0.03) 6%,
-	// 		transparent 6%,
-	// 		transparent 94%
-	// 	),
-	// 	radial-gradient(
-	// 		circle at 31% 83%,
-	// 		rgba(255, 255, 255, 0.03) 0%,
-	// 		rgba(255, 255, 255, 0.03) 6%,
-	// 		transparent 6%,
-	// 		transparent 94%
-	// 	),
-	// 	radial-gradient(
-	// 		circle at 46% 54%,
-	// 		rgba(255, 255, 255, 0.03) 0%,
-	// 		rgba(255, 255, 255, 0.03) 6%,
-	// 		transparent 6%,
-	// 		transparent 94%
-	// 	),
-	// 	radial-gradient(
-	// 		circle at 16% 24%,
-	// 		rgba(255, 255, 255, 0.03) 0%,
-	// 		rgba(255, 255, 255, 0.03) 6%,
-	// 		transparent 6%,
-	// 		transparent 94%
-	// 	),
-	// 	radial-gradient(
-	// 		circle at 18% 9%,
-	// 		rgba(255, 255, 255, 0.03) 0%,
-	// 		rgba(255, 255, 255, 0.03) 6%,
-	// 		transparent 6%,
-	// 		transparent 94%
-	// 	),
-	// 	radial-gradient(
-	// 		circle at 85% 69%,
-	// 		rgba(255, 255, 255, 0.04) 0%,
-	// 		rgba(255, 255, 255, 0.04) 4%,
-	// 		transparent 4%,
-	// 		transparent 96%
-	// 	),
-	// 	radial-gradient(
-	// 		circle at 55% 7%,
-	// 		rgba(255, 255, 255, 0.04) 0%,
-	// 		rgba(255, 255, 255, 0.04) 4%,
-	// 		transparent 4%,
-	// 		transparent 96%
-	// 	),
-	// 	radial-gradient(
-	// 		circle at 69% 69%,
-	// 		rgba(255, 255, 255, 0.04) 0%,
-	// 		rgba(255, 255, 255, 0.04) 4%,
-	// 		transparent 4%,
-	// 		transparent 96%
-	// 	),
-	// 	radial-gradient(
-	// 		circle at 68% 60%,
-	// 		rgba(255, 255, 255, 0.04) 0%,
-	// 		rgba(255, 255, 255, 0.04) 4%,
-	// 		transparent 4%,
-	// 		transparent 96%
-	// 	),
-	// 	linear-gradient(135deg, rgb(3, 7, 46), rgb(24, 44, 146));
+.header {
+	color: white;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 0.5rem;
+	text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc,
+		0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc,
+		0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
 }
 
 .footer {
@@ -95,4 +25,11 @@
 	width: 100%;
 	text-align: center;
 	margin-bottom: 0.2rem;
+	font-weight: bold;
+}
+
+.newRecipeHeader {
+	text-align: center;
+	text-transform: uppercase;
+	color: rgb(98, 230, 253);
 }

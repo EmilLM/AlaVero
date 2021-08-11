@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from '../../styles/AddRecipe.module.scss';
+import styles from '../../styles/RecipeForm.module.scss';
 
 const RecipeForm = ({ recipe }) => {
 	const [formState, setFormState] = useState({
