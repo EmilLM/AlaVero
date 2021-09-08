@@ -2,10 +2,11 @@
 	width: 75%;
 	min-width: 330px;
 	margin: 0 auto;
+	height: auto;
 	h6 {
 		padding: 0.3em 0;
 		font-size: 0.6em;
-		font-weight: bold;
+		font-weight: bld;
 		text-transform: uppercase;
 		color: navy;
 	}
@@ -15,6 +16,7 @@
 	text-align: center;
 	text-transform: uppercase;
 	color: white;
+	margin-bottom: 0.5rem;
 	text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc,
 		0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc,
 		0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
@@ -27,8 +29,9 @@
 
 .ingredientsContainer {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: wrap-reverse;
 	justify-content: center;
+
 	.ingredients {
 		padding: 0.1em;
 		font-size: 0.5em;
@@ -37,9 +40,31 @@
 		font-weight: 400;
 	}
 	.checkbox {
-		width: 20px;
-		height: 20px;
+		width: 0.5rem;
+		height: 0.5rem;
 		margin-right: 5px;
+	}
+	.ingredientsBox {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		text-align: start;
+		width: 66%;
+		min-width: 330px;
+		div {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+	}
+	.imgBox {
+		width: 33%;
+		min-width: 300px;
+		align-self: center;
+		img {
+			border-radius: 5px;
+		}
 	}
 }
 .prepContainer {

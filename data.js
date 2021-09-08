@@ -4,6 +4,7 @@ const recipes = [
 		favorite: false,
 		image: 'ph.jpg',
 		name: 'Ora 12',
+		type: 'prajitura',
 		cooking:
 			' Blat: cuptor raft mijloc, program aburi, 30min temperatura 180C ',
 		ingredients: [

@@ -3,23 +3,25 @@
 	text-decoration: none;
 	position: fixed;
 	top: 20px;
-	right: 70px;
-	color: rgb(25, 100, 110);
+	right: 3%;
+	color: white;
+	font-size: 1em;
+
 	z-index: 99;
 	&:hover {
-		color: white;
+		color: rgb(98, 230, 253);
 	}
-	&::before {
-		position: absolute;
-		content: '';
-		top: -5px;
-		right: -6px;
-		width: 60px;
-		height: 60px;
-		border-radius: 50%;
-		background: rgb(98, 230, 253);
-		z-index: -1;
-	}
+	// &::before {
+	// 	position: absolute;
+	// 	content: '';
+	// 	top: -5px;
+	// 	right: -6px;
+	// 	width: 60px;
+	// 	height: 60px;
+	// 	border-radius: 50%;
+	// 	background: rgb(98, 230, 253);
+	// 	z-index: -1;
+	// }
 }
 
 .menuButton {
@@ -27,9 +29,9 @@
 	background: none;
 	font-size: 1em;
 	font-weight: bold;
-	position: absolute;
+	position: fixed;
 	top: 20px;
-	left: 50px;
+	left: 3%;
 	cursor: pointer;
 	color: white;
 
