@@ -3,19 +3,16 @@ import Ingredient from '../Ingredient';
 import RecipeForm from '../newRecipe.js/RecipeForm';
 import Image from 'next/image';
 import ph from '../../public/ph.jpg';
+import ReactHtmlParser from 'react-html-parser';
 
 const RecipeContent = ({ editRecipe, recipe }) => {
 	const ingredients = recipe.ingredients?.map((ingredient, index) => (
 		<Ingredient ingredient={ingredient} key={index} />
 	));
 
-	const preparationSteps = recipe.preparation?.map((step, index) => {
-		return (
-			<li className={styles.steps} key={index}>
-				{step}
-			</li>
-		);
-	});
+	
+	
+
 	if (editRecipe)
 		return (
 			<>
@@ -38,14 +35,12 @@ const RecipeContent = ({ editRecipe, recipe }) => {
 						<div>{ingredients}</div>
 					</div>
 					<div className={styles.imgBox}>
-						<Image src={ph} alt='ph' layout='responsive' priority />
+						<Image src={ph} alt='ph' layout='responsive' />
 					</div>
 				</section>
 
 				<h6>Preparare:</h6>
-				<div className={styles.prepContainer}>
-					<ol>{preparationSteps}</ol>
-				</div>
+				<div className={styles.prepContainer}>{ReactHtmlParser(recipe.preparation)}</div>
 
 				<h6>Gatire:</h6>
 				<div className={styles.cooking}>{recipe.cooking}</div>

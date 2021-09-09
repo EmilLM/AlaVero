@@ -1,14 +1,30 @@
 import { useState, useEffect } from 'react';
 import styles from '../../styles/RecipeForm.module.scss';
 import PrepEditor from './RecipePrepEditor';
+import Image from 'next/image';
+import ph from '../../public/placeholder.png';
 
 const RecipeForm = ({ recipe }) => {
 	const [formState, setFormState] = useState({
 		name: recipe?.name,
+		addedBy: recipe?.addedBy,
+		type: recipe?.type,
+		favorite: recipe?.favorite,
+		img: recipe?.img,
 		ingredients: recipe?.ingredients,
 		preparation: recipe?.preparation,
 		cooking: recipe?.cooking,
 	});
+	const {
+		name,
+		addedBy,
+		img,
+		favorite,
+		type,
+		ingredients,
+		preparation,
+		cooking,
+	} = formState;
 
 	function handleChange(e) {
 		setFormState({
@@ -19,61 +35,80 @@ const RecipeForm = ({ recipe }) => {
 
 	return (
 		<form className={styles.formContainer}>
-			<section className={styles.sectionInputs}>
-				<div className={styles.textInputsArea}>
+			<section className={styles.smallInputs}>
+				<div className={styles.textInputs}>
 					<label htmlFor='name'>
 						Nume:
 						<input
 							type='text'
 							name='name'
-							value={formState.name}
+							value={name}
+							onChange={handleChange}
+						/>
+					</label>
+					<label htmlFor='addedBy'>
+						Adaugata de:
+						<input
+							type='text'
+							name='addedBy'
+							value={addedBy}
 							onChange={handleChange}
 						/>
 					</label>
 					<label htmlFor='cooking'>
-						Gatire:
+						Mod Gatire:
 						<input
 							type='text'
 							name='cooking'
-							value={formState.cooking}
+							value={cooking}
 							onChange={handleChange}
 						/>
 					</label>
 				</div>
-				<div className={styles.otherInputsArea}>
-					<label htmlFor='isFavorite' className={styles.favoriteCheckbox}>
-						Este favorita?
-						<input type='checkbox' name='isFavorite' />
+				<div className={styles.checkSelect}>
+					<label htmlFor='isFavorite' className={styles.favCheckbox}>
+						favorita?
+						<input
+							type='checkbox'
+							name='isFavorite'
+							value={favorite}
+							checked={favorite}
+							onChange={handleChange}
+						/>
 					</label>
 
 					<select>
-						<option>Categorie:</option>
+						<option disabled>Categorie:</option>
 						<option>Prajitura</option>
 						<option>Mancare</option>
 						<option>Sos</option>
 					</select>
-
-					<label htmlFor='imgInput' className={styles.imgInput}>
-						Alege imagine:
-						<input type='file' name='imgInput' accept='image/*' />
-						{/* <input type='submit' name='submit' className={styles.fileSubmit} /> */}
+				</div>
+				<div className={styles.imgInput}>
+					<label htmlFor='imgInput'>
+						Click <br />
+						pentru alegerea imaginii!
+						<input type='file' name='imgInput' id='imgInput' accept='image/*' />
+						<div className={styles.imgBox}>
+							<Image src={ph} alt='ph' layout='responsive' />
+						</div>
 					</label>
 				</div>
 			</section>
-			<section className={styles.standardInputs}>
+
+			<section className={styles.largeInputs}>
 				<label htmlFor='ingredients'>
 					Ingrediente:
 					<textarea
 						type='text'
 						name='ingredients'
-						value={formState.ingredients}
+						value={ingredients}
 						onChange={handleChange}
 					/>
 				</label>
-				<h6>Preparare:</h6>
-
-				<div className={styles.prepEditor}>
-					<PrepEditor />
+				<div className={styles.editor}>
+					<h6>Preparare:</h6>
+					<PrepEditor recipePrep={preparation} />
 				</div>
 
 				<button type='submit' className={styles.submitButton}>

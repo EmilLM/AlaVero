@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import Editor from './CKEditor';
+import styles from '../../styles/RecipeForm.module.scss';
 
-const PrepEditor = () => {
+const PrepEditor = ({ recipePrep }) => {
 	const [editorLoaded, setEditorLoaded] = useState(false);
 	const [data, setData] = useState('');
 
@@ -9,14 +10,16 @@ const PrepEditor = () => {
 		setEditorLoaded(true);
 	}, []);
 	return (
-		<Editor
-			name='description'
-			onChange={(data) => {
-				setData(data);
-			}}
-			editorLoaded={editorLoaded}
-			value='WTF'
-		/>
+		<div className={styles.prepEditor}>
+			<Editor
+				name='description'
+				onChange={(data) => {
+					setData(data);
+				}}
+				editorLoaded={editorLoaded}
+				value={recipePrep}
+			/>
+		</div>
 	);
 };
 

@@ -1,28 +1,33 @@
+@mixin fontStyles {
+	font-size: 1.5rem;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: navy;
+}
+
 .formContainer {
-	min-height: 80vh;
 	width: 70%;
 	min-width: 70vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
-	margin: 0 auto;
-	.standardInputs,
-	.textInputsArea {
+	margin: 1em auto;
+	.largeInputs,
+	.textInputs {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: space-between;
+		min-width: 330px;
+
 		label {
 			display: flex;
 			flex-direction: column;
-			font-size: 0.5em;
-			text-transform: uppercase;
-			font-weight: bold;
-			color: navy;
+			@include fontStyles();
 		}
 		input {
 			height: 50px;
-			margin-top: 5px;
-			font-size: 0.8em;
+			margin-top: 0.5em;
+			font-size: 1.5rem;
 			padding-left: 5px;
 			border-radius: 3px;
 			color: #282828;
@@ -33,10 +38,9 @@
 			}
 		}
 		textarea {
-			height: 120px;
-			margin-top: 5px;
-			padding-left: 5px;
-			font-size: 0.8em;
+			margin-top: 0.5em;
+			padding: 5px 0 0 15px;
+			font-size: 1.5rem;
 			resize: none;
 			border-radius: 3px;
 			user-select: auto;
@@ -47,14 +51,11 @@
 			}
 		}
 		h6 {
-			font-size: 0.5em;
-			text-transform: uppercase;
-			font-weight: bold;
-			color: navy;
-			margin-bottom: 5px;
+			@include fontStyles();
+			margin-bottom: 0.5em;
 		}
 		.prepEditor {
-			font-size: 0.4em;
+			font-size: 1.5rem;
 
 			// CKEditor
 			ol,
@@ -78,7 +79,7 @@
 		}
 		.submitButton {
 			margin-top: 30px;
-			font-size: 0.6em;
+			font-size: 1.5rem;
 			width: 50%;
 			height: 50px;
 			align-self: center;
@@ -99,55 +100,80 @@
 		}
 	}
 }
-.sectionInputs {
+.largeInputs {
+	height: 600px;
+	textarea {
+		height: 170px;
+	}
+}
+.smallInputs {
+	min-width: 330px;
+	height: 850px;
 	width: 100%;
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	.otherInputsArea {
-		min-width: 330px;
-		width: 48%;
+	flex-direction: column;
+	justify-content: space-around;
+	.textInputs {
+		height: 330px;
+	}
+	.checkSelect {
+		// height: 50px;
+		width: 100%;
 		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		align-items: space-between;
+		justify-content: space-evenly;
 
-		label {
-			font-size: 0.5em;
-			text-transform: uppercase;
-			font-weight: bold;
-			color: navy;
-		}
-		.favoriteCheckbox {
-			display: flex;
-			justify-content: space-between;
-			align-items: flex-start;
-			align-items: center;
-			width: 55%;
-			height: 40px;
-			input {
-				width: 0.6rem;
-				height: 0.6rem;
-				margin-right: 2em;
-			}
-		}
 		select {
-			width: 40%;
-			height: 40px;
+			width: 30%;
+			min-width: 150px;
+			font-size: 1.2rem;
+			color: navy;
+			font-weight: bold;
+			text-transform: uppercase;
 		}
-		.imgInput {
-			width: 50%;
-			height: 110px;
+		.favCheckbox {
 			display: flex;
-			flex-direction: column;
-			justify-content: space-evenly;
-			border: 1px solid red;
-			.fileSubmit {
-				width: 195px;
+			justify-content: center;
+			align-items: center;
+			min-width: 150px;
+			@include fontStyles();
+
+			input {
+				width: 25px;
+				height: 25px;
+				margin-left: 2em;
 			}
 		}
 	}
-	.textInputsArea {
-		width: 48%;
+	.imgInput {
+		height: 300px;
+		width: 100%;
+		.imgBox {
+			width: 40%;
+			min-width: 300px;
+			img {
+				width: 60%;
+				border-radius: 4px;
+				box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+			}
+		}
+
+		label {
+			width: 100%;
+			// display: flex;
+			// flex-direction: column;
+			// justify-content: space-evenly;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: center;
+			text-align: center;
+			@include fontStyles();
+			@media screen and (max-width: 915px) {
+				justify-content: center;
+			}
+			input[type='file'] {
+				display: none;
+			}
+		}
 	}
 }

@@ -1,11 +1,10 @@
 .backButton {
-	font-size: 0.9em;
 	text-decoration: none;
 	position: fixed;
 	top: 20px;
 	right: 3%;
 	color: white;
-	font-size: 1em;
+	font-size: 2rem;
 
 	z-index: 99;
 	&:hover {
@@ -27,14 +26,14 @@
 .menuButton {
 	border: none;
 	background: none;
-	font-size: 1em;
+	font-size: 2rem;
 	font-weight: bold;
 	position: fixed;
 	top: 20px;
 	left: 3%;
 	cursor: pointer;
 	color: white;
-
+	z-index: 9999;
 	svg {
 		&:hover {
 			color: rgb(98, 230, 253);
@@ -44,7 +43,6 @@
 
 .menu {
 	position: absolute;
-	z-index: 99;
 	min-width: 200px;
 	background: white;
 	border-radius: 5px;
@@ -62,7 +60,7 @@
 		li {
 			width: 100%;
 			text-align: left;
-			font-size: 0.5em;
+			font-size: 1.5rem;
 			color: navy;
 			&:hover {
 				background: rgb(98, 230, 253);
