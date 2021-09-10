@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import styles from '../../styles/Buttons.module.scss';
 import { FiMenu } from 'react-icons/fi';
-import { useClickOutside } from '../../utils/hooks';
+import { useClickOutside } from '../../src/utils/hooks';
 
 const MenuButton = (props) => {
 	const [showMenu, setShowMenu] = useState(false);

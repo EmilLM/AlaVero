@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import styles from '../styles/Nav.module.scss';
 import { FaArrowAltCircleDown } from 'react-icons/fa';
-import { useClickOutside } from '../utils/hooks';
+import { useClickOutside } from '../src/utils/hooks';
 
 const SelectCategory = () => {
 	const [showOptions, setShowOptions] = useState(false);
