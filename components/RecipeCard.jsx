@@ -14,7 +14,7 @@ const RecipeCard = ({ recipe }) => {
 	}
 
 	return (
-		<Link href={`/recipes/${encodeURIComponent(recipe.name)}`}>
+		<Link href={`/recipes/${encodeURIComponent(recipe.name)}`}  passHref>
 			<div className={styles.card}>
 				<div className={styles.cardImage}>
 					<Image src={ph} alt='ph' layout='responsive' />

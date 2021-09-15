@@ -29,7 +29,7 @@ const Nav = () => {
 					Cauta
 				</button>
 
-				<Link href='/newRecipe'>
+				<Link href='/newRecipe' passHref>
 					<button className={styles.navBtn}>
 						<BsFillPlusCircleFill />
 						Adauga

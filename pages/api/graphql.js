@@ -1,22 +1,15 @@
 import { ApolloServer, gql } from 'apollo-server-micro';
 import { connectDb } from '../../src/services/mongo';
+import { resolvers } from '../../src/resolvers/resolvers.graphql';
 
 import fs from 'fs';
 import path from 'path';
-
 
 const typeDefs = fs.readFileSync(
 	path.join(__dirname, '../../../../src/schemas', 'schema.graphql'),
 	'utf8'
 );
 
-const resolvers = {
-	Query: {
-		users(parent, args, context) {
-			return [{ name: 'Nextjs', id: 'foo' }];
-		},
-	},
-};
 connectDb();
 const apolloServer = new ApolloServer({ typeDefs, resolvers });
 

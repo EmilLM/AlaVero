@@ -2,7 +2,6 @@ const recipes = [
 	{
 		id: 0,
 		favorite: true,
-		image: 'ph.jpg',
 		name: 'Ora 12',
 		addedBy: 'Vero',
 		type: 'prajitura',

@@ -1,7 +1,39 @@
+type Recipe {
+	id: ID
+	name: String!
+	type: String!
+	addedBy: String
+	favorite: Boolean
+	img: String
+	cooking: String
+	ingredients: [String]
+	preparation: String
+	createdAt: DateTime
+}
+
 type Query {
-		users: [User!]!
-	}
-	type User {
-		name: String
-		id: String
-	}
+	#get Recipe/s
+	getRecipes: [Recipe!]!
+	getRecipe(id: ID!): Recipe!
+}
+
+input createRecipe {
+	name: String!
+	type: String!
+	addedBy: String
+	favorite: Boolean
+	img: String
+	cooking: String
+	ingredients: [String]
+	preparation: String
+	createdAt: DateTime
+}
+
+type Mutation {
+	newRecipe(input: createRecipe): Recipe
+	updateRecipe(id: ID!, input: createRecipe): Recipe
+	deleteRecipe(id: ID!): String
+}
+
+scalar DateTime
+
