@@ -15,7 +15,7 @@
 }
 .card {
 	background: white;
-	border-radius: 10px;
+	border-radius: 5px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -23,17 +23,21 @@
 	padding: 16px;
 	box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 	cursor: pointer;
-
+	transition: all ease-in-out 0.5s;
 	&:hover {
 		background: rgb(98, 230, 253);
+		transform: scale(1.1);
 	}
 	.cardImage {
 		width: 100%;
+		height: 200px;
+		position: relative;
 		img {
-			border-radius: 10px;
+			border-radius: 5px;
 		}
 	}
 	.cardInfo {
+		// height: 100px;
 		width: 100%;
 		font-size: 2rem;
 		text-align: center;

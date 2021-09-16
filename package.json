@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.4.11",
     "@ckeditor/ckeditor5-build-classic": "^29.2.0",
     "@ckeditor/ckeditor5-react": "^3.0.2",
     "apollo-server-micro": "^3.3.0",
     "graphql": "^15.5.3",
+    "graphql-request": "^3.5.0",
     "micro": "^9.3.4",
     "mongoose": "^6.0.5",
     "next": "^11.1.0",

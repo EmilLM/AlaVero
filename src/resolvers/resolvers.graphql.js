@@ -12,8 +12,8 @@ export const resolvers = {
 				console.log(err);
 			}
 		},
-		getRecipe: async (_, { id }) => {
-			const recipe = await Recipe.findById(id);
+		getRecipe: async (_, { name }) => {
+			const recipe = await Recipe.findOne({name: name});
 
 			if (!recipe) {
 				throw new Error('Recipe not found!');

@@ -3,8 +3,8 @@ import RecipeCard from './RecipeCard';
 import { useState } from 'react';
 import data from '../data';
 
-const Recipes = () => {
-	const [recipes, setRecipes] = useState(data);
+const Recipes = ({recipes}) => {
+	// const [recipes, setRecipes] = useState(data);
 	return (
 		<section className={styles.container}>
 			{recipes.map((recipe) => (

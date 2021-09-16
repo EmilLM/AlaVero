@@ -6,7 +6,7 @@ import RecipeContent from './RecipeContent';
 import HomeButton from '../general/HomeButton';
 import Layout from '../general/Layout';
 
-const RecipeInfo = ({ recipe }) => {
+const RecipePageInfo = ({ recipe }) => {
 	const [editRecipe, setEditRecipe] = useState(false);
 
 	function handleEditRecipe() {
@@ -15,7 +15,10 @@ const RecipeInfo = ({ recipe }) => {
 	return (
 		<Layout>
 			<MenuButton>
-				<RecipeMenu handleEditRecipe={handleEditRecipe} editRecipe={editRecipe} />
+				<RecipeMenu
+					handleEditRecipe={handleEditRecipe}
+					editRecipe={editRecipe}
+				/>
 			</MenuButton>
 
 			<HomeButton />
@@ -25,4 +28,4 @@ const RecipeInfo = ({ recipe }) => {
 	);
 };
 
-export default RecipeInfo;
+export default RecipePageInfo;

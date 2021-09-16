@@ -97,6 +97,11 @@
 				background: rgba(0, 91, 196, 0.9);
 				box-shadow: 0 6px 20px rgb(0 118 255 / 23%);
 			}
+			&:disabled {
+				background: gray;
+				box-shadow: none;
+				cursor: auto;
+			}
 		}
 	}
 }

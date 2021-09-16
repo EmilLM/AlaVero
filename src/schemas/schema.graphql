@@ -1,5 +1,5 @@
 type Recipe {
-	id: ID
+	id: String
 	name: String!
 	type: String!
 	addedBy: String
@@ -14,7 +14,7 @@ type Recipe {
 type Query {
 	#get Recipe/s
 	getRecipes: [Recipe!]!
-	getRecipe(id: ID!): Recipe!
+	getRecipe(name: String!): Recipe!
 }
 
 input createRecipe {
@@ -36,4 +36,3 @@ type Mutation {
 }
 
 scalar DateTime
-

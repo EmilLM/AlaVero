@@ -1,16 +1,17 @@
 import Head from 'next/head';
-import RecipePage from '../../components/recipePage/RecipePage';
-
+import RecipeInfo from '../../components/recipePage/RecipePageInfo';
+import { request } from 'graphql-request';
+import { RecipePageQuery } from '../../src/gql/queries.graphql';
 import recipe from '../../data';
-import { useRouter } from 'next/router';
 
-const RecipesPage = () => {
+const RecipesPage = ({ data }) => {
+	const { name } = data;
 	return (
 		<>
 			<Head>
-				<title>{recipe.name}</title>
+				<title>{name}</title>
 			</Head>
-			<RecipePage recipe={recipe[0]} />
+			<RecipeInfo recipe={data} />
 		</>
 	);
 };
@@ -18,3 +19,14 @@ const RecipesPage = () => {
 export default RecipesPage;
 
 // use ssprops with graphql to get the recipe by name
+export async function getServerSideProps({ params }) {
+	const variables = { name: params.name };
+	const { getRecipe } = await request(
+		'http://localhost:3000/api/graphql',
+		RecipePageQuery,
+		variables
+	);
+	return {
+		props: { data: getRecipe },
+	};
+}

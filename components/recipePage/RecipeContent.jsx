@@ -10,9 +10,6 @@ const RecipeContent = ({ editRecipe, recipe }) => {
 		<Ingredient ingredient={ingredient} key={index} />
 	));
 
-	
-	
-
 	if (editRecipe)
 		return (
 			<>
@@ -40,7 +37,9 @@ const RecipeContent = ({ editRecipe, recipe }) => {
 				</section>
 
 				<h6>Preparare:</h6>
-				<div className={styles.prepContainer}>{ReactHtmlParser(recipe.preparation)}</div>
+				<div className={styles.prepContainer}>
+					{ReactHtmlParser(recipe.preparation)}
+				</div>
 
 				<h6>Gatire:</h6>
 				<div className={styles.cooking}>{recipe.cooking}</div>
