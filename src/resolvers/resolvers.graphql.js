@@ -1,6 +1,5 @@
 import { Recipe } from '../schemas/recipe.schema';
 
-
 export const resolvers = {
 	Query: {
 		// recipes
@@ -13,7 +12,7 @@ export const resolvers = {
 			}
 		},
 		getRecipe: async (_, { name }) => {
-			const recipe = await Recipe.findOne({name: name});
+			const recipe = await Recipe.findOne({ name: name });
 
 			if (!recipe) {
 				throw new Error('Recipe not found!');
@@ -25,8 +24,7 @@ export const resolvers = {
 
 	Mutation: {
 		// recipes
-		newRecipe: async (parent, {input }) => {
-      
+		newRecipe: async (parent, { input }) => {
 			try {
 				const recipe = new Recipe(input);
 				const result = await recipe.save();
@@ -48,18 +46,16 @@ export const resolvers = {
 
 			return recipe;
 		},
-		deleteRecipe: async (parent, { id }) => {
-			const recipe = await Recipe.findById(id);
+		deleteRecipe: async (parent, { name }) => {
+			const recipe = await Recipe.findOne({ name:name });
 
 			if (!recipe) {
 				throw new Error('Recipe not found!');
 			}
 
-			await Recipe.findOneAndDelete({ _id: id });
+			await Recipe.findOneAndDelete({ name: name });
 
 			return 'Recipe deleted!';
 		},
 	},
 };
-
-

@@ -1,17 +1,16 @@
-import { gql } from '@apollo/client';
-
-export const RecipeCardQuery = gql`
+export const RecipeCardQuery = `
 	{
 		getRecipes {
 			name
 			favorite
+			addedBy
 			img
 			id
 		}
 	}
 `;
 
-export const RecipePageQuery = gql`
+export const RecipePageQuery = `
 	query getRecipe($name: String!) {
 		getRecipe(name: $name) {
 			name

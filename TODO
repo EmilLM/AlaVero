@@ -1,6 +1,7 @@
 add localStorage/cookie for addNewRecipe
 add ingredients one by one
 react virtualized / lazy load recipes
-
+add context
+add delete confirmation
 
 

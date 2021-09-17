@@ -9,15 +9,14 @@ import Layout from '../general/Layout';
 const RecipePageInfo = ({ recipe }) => {
 	const [editRecipe, setEditRecipe] = useState(false);
 
-	function handleEditRecipe() {
-		setEditRecipe((prevState) => !prevState);
-	}
+	
 	return (
 		<Layout>
 			<MenuButton>
 				<RecipeMenu
-					handleEditRecipe={handleEditRecipe}
+					setEditRecipe={setEditRecipe}
 					editRecipe={editRecipe}
+					recipe={recipe}
 				/>
 			</MenuButton>
 

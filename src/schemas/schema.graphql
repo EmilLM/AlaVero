@@ -32,7 +32,7 @@ input createRecipe {
 type Mutation {
 	newRecipe(input: createRecipe): Recipe
 	updateRecipe(id: ID!, input: createRecipe): Recipe
-	deleteRecipe(id: ID!): String
+	deleteRecipe(name: String!): String
 }
 
 scalar DateTime

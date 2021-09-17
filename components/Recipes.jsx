@@ -1,10 +1,7 @@
 import styles from '../styles/RecipeCard.module.scss';
 import RecipeCard from './RecipeCard';
-import { useState } from 'react';
-import data from '../data';
 
-const Recipes = ({recipes}) => {
-	// const [recipes, setRecipes] = useState(data);
+const Recipes = ({ recipes }) => {
 	return (
 		<section className={styles.container}>
 			{recipes.map((recipe) => (

@@ -11,10 +11,10 @@ import { useRouter } from 'next/router';
 const RecipeForm = ({ recipe }) => {
 	const [formState, setFormState] = useState({
 		name: recipe?.name || '',
-		addedBy: recipe?.addedBy || '',
+		addedBy: recipe?.addedBy || 'Vero',
 		type: recipe?.type || 'mancare',
-		favorite: recipe?.favorite || false,
-		img: recipe?.img || '',
+		favorite: false,
+		img: recipe?.img || 'ph.jpg',
 		ingredients: recipe?.ingredients || '',
 		preparation: recipe?.preparation || '',
 		cooking: recipe?.cooking || '',
@@ -41,7 +41,6 @@ const RecipeForm = ({ recipe }) => {
 	}
 	// const [newRecipe, { loading, error, data }] = useMutation(PostRecipe, {variables: {input: formState}});
 
-	console.log('test', formState.name);
 	const router = useRouter();
 	const handleSubmit = async (e) => {
 		try {
@@ -51,7 +50,6 @@ const RecipeForm = ({ recipe }) => {
 				PostRecipe,
 				{ input: formState }
 			);
-			console.log('test', formState.name);
 
 			router.push('/recipes/' + newRecipe.name);
 		} catch (err) {

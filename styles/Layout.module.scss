@@ -1,20 +1,21 @@
 .container {
-	display: grid;
-	align-content: space-around;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	background: rgb(25, 100, 110);
 	min-height: 100vh;
-	height: auto;
-	@media screen and (min-width: 768px) {
-		padding: 0 3em;
-	}
+	width: 100%;
+	padding: 0 2vw;
 }
 
 .header {
 	color: white;
+	min-height: 150px;
 	font-size: 2rem;
 	width: 100%;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	margin-top: 0.5rem;
 	text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc,
 		0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc,
@@ -22,7 +23,10 @@
 }
 
 .footer {
-	font-size: 1.2rem;
+	display: grid;
+	place-content: center;
+	min-height: 100px;
+	font-size: 1.3rem;
 	width: 100%;
 	text-align: center;
 	font-weight: bold;

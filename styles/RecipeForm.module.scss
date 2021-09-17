@@ -6,12 +6,19 @@
 }
 
 .formContainer {
-	width: 70%;
-	min-width: 70vw;
+	width: 80%;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-evenly;
-	margin: 1em auto;
+	// justify-content: space-evenly;
+	margin: 0 auto;
+	width: 100%;
+	@media screen and (min-width: 450px) and (max-width: 766px) {
+		width: 85%;
+	}
+	@media screen and (min-width: 767px) {
+		width: 70%;
+		margin: 1em auto;
+	}
 	.largeInputs,
 	.textInputs {
 		display: flex;
@@ -50,33 +57,38 @@
 				border: 3px solid #5551ff;
 			}
 		}
-		h6 {
-			@include fontStyles();
-			margin-bottom: 0.5em;
-		}
-		.prepEditor {
-			font-size: 1.5rem;
+		.editor {
+			margin-top: 1em;
+			min-height: 250px;
 
-			// CKEditor
-			ol,
-			ul {
-				padding-left: 15px;
-				margin: 5px 0;
+			h6 {
+				@include fontStyles();
+				margin-bottom: 0.5em;
 			}
-			p {
-				padding-left: 0px;
-				margin: 5px 0;
-			}
+			.prepEditor {
+				font-size: 1.5rem;
+				// CKEditor
+				ol,
+				ul {
+					padding-left: 15px;
+					margin: 5px 0;
+				}
+				p {
+					padding-left: 0px;
+					margin: 5px 0;
+				}
 
-			label {
-				display: none;
-			}
-			.prepPh {
-				height: 120px;
-				border: none;
-				box-shadow: none;
+				label {
+					display: none;
+				}
+				.prepTextarea {
+					height: 120px;
+					border: none;
+					box-shadow: none;
+				}
 			}
 		}
+
 		.submitButton {
 			margin-top: 30px;
 			font-size: 1.5rem;
@@ -106,7 +118,6 @@
 	}
 }
 .largeInputs {
-	height: 600px;
 	textarea {
 		height: 170px;
 	}
@@ -152,9 +163,15 @@
 	.imgInput {
 		height: 300px;
 		width: 100%;
+
 		.imgBox {
 			width: 40%;
 			min-width: 300px;
+			margin-top: 20px;
+			@media screen and (max-width: 980px) {
+				margin-top: 0;
+			}
+
 			img {
 				width: 60%;
 				border-radius: 4px;
@@ -164,16 +181,15 @@
 
 		label {
 			width: 100%;
-			// display: flex;
-			// flex-direction: column;
-			// justify-content: space-evenly;
+
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
 			align-items: center;
 			text-align: center;
+
 			@include fontStyles();
-			@media screen and (max-width: 915px) {
+			@media screen and (max-width: 980px) {
 				justify-content: center;
 			}
 			input[type='file'] {

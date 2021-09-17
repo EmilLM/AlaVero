@@ -6,20 +6,18 @@ import ph from '../../public/ph.jpg';
 import ReactHtmlParser from 'react-html-parser';
 
 const RecipeContent = ({ editRecipe, recipe }) => {
-	const ingredients = recipe.ingredients?.map((ingredient, index) => (
-		<Ingredient ingredient={ingredient} key={index} />
-	));
-
 	if (editRecipe)
 		return (
 			<>
 				<h5 className={styles.editTitle}>Editare reteta:</h5>
 
-				<div className={styles.recipe}>
-					<RecipeForm recipe={recipe} />
-				</div>
+				<RecipeForm recipe={recipe} />
 			</>
 		);
+
+	const ingredients = recipe.ingredients?.map((ingredient, index) => (
+		<Ingredient ingredient={ingredient} key={index} />
+	));
 
 	return (
 		<>
@@ -36,13 +34,17 @@ const RecipeContent = ({ editRecipe, recipe }) => {
 					</div>
 				</section>
 
-				<h6>Preparare:</h6>
 				<div className={styles.prepContainer}>
-					{ReactHtmlParser(recipe.preparation)}
+					<h6>Preparare:</h6>
+
+					<div>{ReactHtmlParser(recipe.preparation)}</div>
 				</div>
 
-				<h6>Gatire:</h6>
-				<div className={styles.cooking}>{recipe.cooking}</div>
+				<div className={styles.cooking}>
+					<h6>Gatire:</h6>
+
+					<p>{recipe.cooking}</p>
+				</div>
 			</article>
 		</>
 	);

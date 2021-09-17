@@ -1,13 +1,13 @@
+import { useState } from 'react';
+
 import styles from '../styles/RecipeCard.module.scss';
 import Image from 'next/image';
-import ph from '../public/ph.jpg';
-import { useState } from 'react';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 import Link from 'next/link';
 
 const RecipeCard = ({ recipe }) => {
 	// const [favorite, setFavorite] = useState(false);
-	const { name, favorite, img } = recipe;
+	const { name, favorite, img, addedBy } = recipe;
 
 	function handleFavorite(e) {
 		e.stopPropagation();
@@ -17,13 +17,16 @@ const RecipeCard = ({ recipe }) => {
 		<Link href={`/recipes/${encodeURIComponent(name)}`} passHref>
 			<div className={styles.card}>
 				<div className={styles.cardImage}>
-					<Image src={'/'+img} alt='ph' layout='fill' />
+					<Image src={'/' + img} alt='ph' layout='fill' />
 				</div>
 				<div className={styles.cardInfo}>
-					<div>{name}</div>
-					<button className={styles.favButton}>
-						{favorite ? <MdFavorite /> : <MdFavoriteBorder />}
-					</button>
+					<div className={styles.cardName}>{name}</div>
+					<div className={styles.cardDesc}>
+						<div>De: {addedBy ? addedBy : 'N/A'}</div>
+						<button className={styles.favButton}>
+							{favorite ? <MdFavorite /> : <MdFavoriteBorder />}
+						</button>
+					</div>
 				</div>
 			</div>
 		</Link>

@@ -40,7 +40,7 @@ function Editor({ onChange, editorLoaded, name, value }) {
 					}}
 				/>
 			) : (
-				<textarea className={styles.prepPh} />
+				<textarea className={styles.prepTextarea} />
 			)}
 		</div>
 	);

@@ -6,7 +6,7 @@ import styles from '../styles/Layout.module.scss';
 import { request } from 'graphql-request';
 import { RecipeCardQuery } from '../src/gql/queries.graphql';
 
-export default function Home({data}) {
+export default function Home({ data }) {
 	const year = new Date().getFullYear();
 	return (
 		<>
@@ -20,7 +20,7 @@ export default function Home({data}) {
 					<h1> &Agrave; La Vero</h1>
 				</header>
 				<Nav />
-				<Recipes recipes = {data} />
+				<Recipes recipes={data} />
 				<footer className={styles.footer}>
 					Site retete @&Agrave; La Vero <span>{year}</span>
 				</footer>
@@ -30,13 +30,13 @@ export default function Home({data}) {
 }
 
 export async function getStaticProps() {
-	const {getRecipes} = await request(
+	const { getRecipes } = await request(
 		'http://localhost:3000/api/graphql',
 		RecipeCardQuery
 	);
 	return {
 		props: {
-			data: getRecipes
+			data: getRecipes,
 		},
 	};
 }

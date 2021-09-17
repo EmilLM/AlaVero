@@ -3,7 +3,7 @@ import styles from '../styles/Nav.module.scss';
 import Link from 'next/link';
 import SelectCategory from './SelectCategory';
 import Search from './Search';
-import { MdFavorite, MdSearch } from 'react-icons/md';
+import { MdFavorite } from 'react-icons/md';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
 import { FaSearch } from 'react-icons/fa';
 
@@ -22,13 +22,11 @@ const Nav = () => {
 					Favorite
 				</button>
 
-				<SelectCategory />
-
 				<button className={styles.navBtn} onClick={handleShowSearch}>
 					<FaSearch />
 					Cauta
 				</button>
-
+				<SelectCategory />
 				<Link href='/newRecipe' passHref>
 					<button className={styles.navBtn}>
 						<BsFillPlusCircleFill />
