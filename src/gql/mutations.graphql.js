@@ -7,6 +7,16 @@ export const PostRecipe = gql`
 		}
 	}
 `;
+export const UpdateRecipe = gql`
+	mutation UpdateRecipeMutation(
+		$updateRecipeName: String!
+		$updateRecipeInput: createRecipe
+	) {
+		updateRecipe(name: $updateRecipeName, input: $updateRecipeInput) {
+			name
+		}
+	}
+`;
 
 export const DeleteRecipe = gql`
 	mutation deleteRecipeMutation($recipeName: String!) {

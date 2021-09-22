@@ -1,4 +1,3 @@
-import { useState } from 'react';
 
 import styles from '../styles/RecipeCard.module.scss';
 import Image from 'next/image';
@@ -22,7 +21,7 @@ const RecipeCard = ({ recipe }) => {
 				<div className={styles.cardInfo}>
 					<div className={styles.cardName}>{name}</div>
 					<div className={styles.cardDesc}>
-						<div>De: {addedBy ? addedBy : 'N/A'}</div>
+						<div>&Agrave; la {addedBy ?? 'N/A'}</div>
 						<button className={styles.favButton}>
 							{favorite ? <MdFavorite /> : <MdFavoriteBorder />}
 						</button>

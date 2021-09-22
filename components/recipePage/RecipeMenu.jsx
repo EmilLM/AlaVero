@@ -11,7 +11,6 @@ const RecipeMenu = ({ setEditRecipe, editRecipe, recipe }) => {
 	};
 
 	const router = useRouter();
-	console.log(recipe.name);
 	const eraseRecipe = async () => {
 		try {
 			const res = await request(

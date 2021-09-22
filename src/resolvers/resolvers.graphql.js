@@ -33,21 +33,24 @@ export const resolvers = {
 				console.log(err);
 			}
 		},
-		updateRecipe: async (parent, { id, input }) => {
-			let recipe = await Recipe.findById(id);
+		updateRecipe: async (parent, { name, input }) => {
+			// let recipe = await Recipe.findById(id);
 
+			// if (!recipe) {
+			// 	throw new Error('Recipe not found!');
+			// }
+
+			const recipe = await Recipe.findOneAndUpdate({ name: name }, input, {
+				new: true,
+			});
+			
 			if (!recipe) {
 				throw new Error('Recipe not found!');
 			}
-
-			recipe = await Recipe.findOneAndUpdate({ _id: id }, input, {
-				new: true,
-			});
-
 			return recipe;
 		},
 		deleteRecipe: async (parent, { name }) => {
-			const recipe = await Recipe.findOne({ name:name });
+			const recipe = await Recipe.findOne({ name: name });
 
 			if (!recipe) {
 				throw new Error('Recipe not found!');

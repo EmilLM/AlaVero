@@ -17,7 +17,7 @@ export default function Home({ data }) {
 			</Head>
 			<Layout>
 				<header className={styles.header}>
-					<h1> &Agrave; La Vero</h1>
+					<h1> &Agrave; la Vero</h1>
 				</header>
 				<Nav />
 				<Recipes recipes={data} />

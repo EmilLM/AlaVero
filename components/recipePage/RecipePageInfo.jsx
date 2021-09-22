@@ -22,7 +22,7 @@ const RecipePageInfo = ({ recipe }) => {
 
 			<HomeButton />
 
-			<RecipeContent editRecipe={editRecipe} recipe={recipe} />
+			<RecipeContent editRecipe={editRecipe} recipe={recipe} setEditRecipe={setEditRecipe}/>
 		</Layout>
 	);
 };

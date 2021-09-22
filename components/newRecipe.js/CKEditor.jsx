@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import styles from '../../styles/RecipeForm.module.scss';
 
-function Editor({ onChange, editorLoaded, name, value }) {
+function Editor({ handleChange, editorLoaded, name, value }) {
 	const editorRef = useRef();
 	const { CKEditor, ClassicEditor } = editorRef.current || {};
 
@@ -36,7 +36,8 @@ function Editor({ onChange, editorLoaded, name, value }) {
 					onChange={(event, editor) => {
 						const data = editor.getData();
 						// console.log({ event, editor, data })
-						onChange(data);
+						// onChange(data);
+						handleChange(data);
 					}}
 				/>
 			) : (

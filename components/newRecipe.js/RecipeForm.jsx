@@ -1,24 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../../styles/RecipeForm.module.scss';
 import PrepEditor from './RecipePrepEditor';
 import Image from 'next/image';
-import ph from '../../public/placeholder.png';
-import { PostRecipe } from '../../src/gql/mutations.graphql';
+import { PostRecipe, UpdateRecipe } from '../../src/gql/mutations.graphql';
 import { request } from 'graphql-request';
 import { useRouter } from 'next/router';
 
 // try using react-hook-form
-const RecipeForm = ({ recipe }) => {
+const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 	const [formState, setFormState] = useState({
-		name: recipe?.name || '',
-		addedBy: recipe?.addedBy || 'Vero',
-		type: recipe?.type || 'mancare',
-		favorite: false,
-		img: recipe?.img || 'ph.jpg',
-		ingredients: recipe?.ingredients || '',
-		preparation: recipe?.preparation || '',
-		cooking: recipe?.cooking || '',
+		name: recipe?.name ?? '',
+		addedBy: recipe?.addedBy ?? 'Vero',
+		type: recipe?.type ?? 'mancare',
+		favorite: recipe?.favorite ?? false,
+		img: recipe?.img ?? 'placeholder.png',
+		ingredients: recipe?.ingredients ?? '',
+		preparation: recipe?.preparation ?? '',
+		cooking: recipe?.cooking ?? '',
 	});
+
+	const [fileInput, setFileInput] = useState('placeholder.png');
 
 	const {
 		name,
@@ -31,15 +32,50 @@ const RecipeForm = ({ recipe }) => {
 		cooking,
 	} = formState;
 
-	const isValid = name && ingredients && cooking;
+	useEffect(() => {
+		const storageRecipe = localStorage.getItem(recipe?.name ?? 'newRecipe');
+		if (storageRecipe) setFormState(JSON.parse(storageRecipe));
+	}, []);
 
+	useEffect(() => {
+		localStorage.setItem(
+			editRecipe ? recipe?.name : 'newRecipe',
+			JSON.stringify(formState)
+		);
+	}, [formState]);
+
+	const isValid = name && ingredients && cooking;
 	function handleChange(e) {
 		setFormState({
 			...formState,
 			[e.target.name]: e.target.value,
 		});
 	}
-	// const [newRecipe, { loading, error, data }] = useMutation(PostRecipe, {variables: {input: formState}});
+	function handleIngredients(e) {
+		setFormState({
+			...formState,
+			ingredients: e.target.value.split(','),
+		});
+	}
+	function handleEditorChange(data) {
+		setFormState({
+			...formState,
+			preparation: data,
+		});
+	}
+	function handleFileChange(e) {
+		// setFormState({
+		// 	...formState,
+		// 	img: URL.createObjectURL(e.target.files[0]),
+		// });
+		setFileInput(URL.createObjectURL(e.target.files[0]));
+	}
+	function handleCheckboxChange(e) {
+		setFormState({
+			...formState,
+			favorite: !favorite,
+		});
+	}
 
 	const router = useRouter();
 	const handleSubmit = async (e) => {
@@ -50,14 +86,32 @@ const RecipeForm = ({ recipe }) => {
 				PostRecipe,
 				{ input: formState }
 			);
-
+			localStorage.removeItem('newRecipe');
 			router.push('/recipes/' + newRecipe.name);
 		} catch (err) {
 			console.error('formError', err);
 		}
 	};
+	const handleEditSubmit = async (e) => {
+		try {
+			e.preventDefault();
+			const { updateRecipe } = await request(
+				'http://localhost:3000/api/graphql',
+				UpdateRecipe,
+				{ updateRecipeName: recipe.name, updateRecipeInput: formState }
+			);
+			localStorage.removeItem(recipe.name);
+			router.push('/recipes/' + updateRecipe.name);
+			setEditRecipe(false);
+		} catch (err) {
+			console.error('edit form error:', err);
+		}
+	};
 	return (
-		<form className={styles.formContainer} onSubmit={handleSubmit}>
+		<form
+			className={styles.formContainer}
+			onSubmit={editRecipe ? handleEditSubmit : handleSubmit}
+		>
 			<section className={styles.smallInputs}>
 				<div className={styles.textInputs}>
 					<label htmlFor='name'>
@@ -94,26 +148,40 @@ const RecipeForm = ({ recipe }) => {
 						<input
 							type='checkbox'
 							name='favorite'
-							value={favorite}
 							checked={favorite}
-							onChange={handleChange}
+							onChange={handleCheckboxChange}
 						/>
 					</label>
 
-					<select>
+					<select value={type} onChange={handleChange} name='type'>
 						<option disabled>Categorie:</option>
-						<option>Prajitura</option>
-						<option>Mancare</option>
-						<option>Sos</option>
+						<option value='prajitura'>Prajitura</option>
+						<option value='mancare'>Mancare</option>
+						<option value='sos'>Sos</option>
 					</select>
 				</div>
 				<div className={styles.imgInput}>
 					<label htmlFor='imgInput'>
 						Click <br />
-						pentru alegerea imaginii!
-						<input type='file' name='imgInput' id='imgInput' accept='image/*' />
+						sa alegi imaginea!
+						<input
+							type='file'
+							name='imgInput'
+							id='imgInput'
+							accept='image/*'
+							onChange={handleFileChange}
+						/>
 						<div className={styles.imgBox}>
-							<Image src={ph} alt='ph' layout='responsive' />
+							{/* change state & Image comp */}
+							<img
+								src={
+									fileInput === 'placeholder.png'
+										? '/placeholder.png'
+										: fileInput
+								}
+								alt='ph'
+								layout='fill'
+							/>
 						</div>
 					</label>
 				</div>
@@ -126,12 +194,15 @@ const RecipeForm = ({ recipe }) => {
 						type='text'
 						name='ingredients'
 						value={ingredients}
-						onChange={handleChange}
+						onChange={handleIngredients}
 					/>
 				</label>
 				<div className={styles.editor}>
 					<h6>Preparare:</h6>
-					<PrepEditor recipePrep={preparation} />
+					<PrepEditor
+						recipePrep={preparation}
+						handleChange={handleEditorChange}
+					/>
 				</div>
 
 				<button

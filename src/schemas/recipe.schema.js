@@ -7,7 +7,7 @@ const recipeSchema = new mongoose.Schema({
 		unique: true,
 		required: true,
 		minLength: [3, 'Numele trebuie sa fie de minim 3 caractere!'],
-		maxLength: [20, 'Numele trebuie sa fie de max 40 caractere!'],
+		maxLength: [60, 'Numele trebuie sa fie de max 40 caractere!'],
 		// validate: [
 		// 	validator.isAlphanumeric,
 		// 	'Numele trebuie sa contina doar litere si cifre!',
