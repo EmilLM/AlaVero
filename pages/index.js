@@ -1,13 +1,50 @@
 import Head from 'next/head';
+import { request } from 'graphql-request';
+import { useState, useEffect } from 'react';
+
 import Layout from '../components/general/Layout';
 import Nav from '../components/Nav';
 import Recipes from '../components/Recipes';
 import styles from '../styles/Layout.module.scss';
-import { request } from 'graphql-request';
 import { RecipeCardQuery } from '../src/gql/queries.graphql';
 
-export default function Home({ data }) {
+export default function Home({ allRecipes, favRecipes }) {
+	const [recipes, setRecipes] = useState(allRecipes);
+	function toggleFavorites(status) {
+		if (status) setRecipes(favRecipes);
+		if (!status) setRecipes(allRecipes);
+		console.log('fav recipes ', recipes);
+	}
+
+	function selectTypeAllRecipes(type) {
+		if (type === 'Prajituri') {
+			const cookies = allRecipes.filter(
+				(recipe) => recipe.type === 'Prajitura'
+			);
+			setRecipes(cookies);
+		} else if (type === 'Mancare') {
+			const food = allRecipes.filter((recipe) => recipe.type === 'Mancare');
+			setRecipes(food);
+		} else if (type === 'Sosuri') {
+			const sauces = allRecipes.filter((recipe) => recipe.type === 'Sos');
+			setRecipes(sauces);
+		} else if (type === 'Toate' || 'Categorii') {
+			setRecipes(allRecipes);
+		} else {
+			setRecipes('Nu exista retete pentru' + type);
+			// !!!!!!!Add message to recipe list
+		}
+	}
+
+	function searchRecipe(input) {
+		//! find better algo
+		const results = allRecipes.filter((recipe) => recipe.name.includes(input));
+		console.log('results', results);
+		if (results && results.length !== 0) setRecipes(results);
+	}
+
 	const year = new Date().getFullYear();
+
 	return (
 		<>
 			<Head>
@@ -19,8 +56,12 @@ export default function Home({ data }) {
 				<header className={styles.header}>
 					<h1> &Agrave; la Vero</h1>
 				</header>
-				<Nav />
-				<Recipes recipes={data} />
+				<Nav
+					toggleFavorites={toggleFavorites}
+					selectTypeAllRecipes={selectTypeAllRecipes}
+					searchRecipe={searchRecipe}
+				/>
+				<Recipes recipes={recipes} />
 				<footer className={styles.footer}>
 					Site retete @&Agrave; La Vero <span>{year}</span>
 				</footer>
@@ -34,9 +75,12 @@ export async function getStaticProps() {
 		'http://localhost:3000/api/graphql',
 		RecipeCardQuery
 	);
+	const onlyFavorites = getRecipes.filter((recipe) => recipe.favorite === true);
+
 	return {
 		props: {
-			data: getRecipes,
+			allRecipes: getRecipes,
+			favRecipes: onlyFavorites,
 		},
 	};
 }

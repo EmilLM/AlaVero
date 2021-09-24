@@ -4,6 +4,7 @@ export const RecipeCardQuery = `
 			name
 			favorite
 			addedBy
+			type
 			img
 			id
 		}

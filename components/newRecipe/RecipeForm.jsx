@@ -45,10 +45,13 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 	}, [formState]);
 
 	const isValid = name && ingredients && cooking;
+
+	
 	function handleChange(e) {
+		const input = e.target.value;
 		setFormState({
 			...formState,
-			[e.target.name]: e.target.value,
+			[e.target.name]: input.charAt(0).toUpperCase() + input.slice(1),
 		});
 	}
 	function handleIngredients(e) {

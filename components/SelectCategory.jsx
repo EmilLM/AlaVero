@@ -1,12 +1,16 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../styles/Nav.module.scss';
 import { FaArrowAltCircleDown } from 'react-icons/fa';
 import { useClickOutside } from '../src/utils/hooks';
 
-const SelectCategory = () => {
+const SelectCategory = ({ selectTypeAllRecipes }) => {
 	const [showOptions, setShowOptions] = useState(false);
-	const optionsRef = useClickOutside(() => setShowOptions(false));
 	const [selectState, setSelectState] = useState('Categorii');
+	const optionsRef = useClickOutside(() => setShowOptions(false));
+
+	useEffect(() => {
+		selectTypeAllRecipes(selectState);
+	}, [selectState]);
 
 	return (
 		<button
@@ -19,7 +23,14 @@ const SelectCategory = () => {
 			{showOptions && (
 				<div className={styles.selectOptions}>
 					<ul>
-						<li onClick={() => setSelectState('Prajituri')}>Prajituri</li>
+						<li onClick={() => setSelectState('Toate')}>Toate</li>
+
+						<li
+							onClick={() => setSelectState('Prajituri')}
+							className={styles.midLi}
+						>
+							Prajituri
+						</li>
 						<li
 							onClick={() => setSelectState('Mancare')}
 							className={styles.midLi}

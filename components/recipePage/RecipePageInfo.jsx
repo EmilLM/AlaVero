@@ -6,23 +6,18 @@ import RecipeContent from './RecipeContent';
 import HomeButton from '../general/HomeButton';
 import Layout from '../general/Layout';
 
-const RecipePageInfo = ({ recipe }) => {
+const RecipePageInfo = () => {
 	const [editRecipe, setEditRecipe] = useState(false);
 
-	
 	return (
 		<Layout>
 			<MenuButton>
-				<RecipeMenu
-					setEditRecipe={setEditRecipe}
-					editRecipe={editRecipe}
-					recipe={recipe}
-				/>
+				<RecipeMenu setEditRecipe={setEditRecipe} editRecipe={editRecipe} />
 			</MenuButton>
 
 			<HomeButton />
 
-			<RecipeContent editRecipe={editRecipe} recipe={recipe} setEditRecipe={setEditRecipe}/>
+			<RecipeContent editRecipe={editRecipe} setEditRecipe={setEditRecipe} />
 		</Layout>
 	);
 };

@@ -3,11 +3,11 @@ import styles from '../styles/Nav.module.scss';
 import Link from 'next/link';
 import SelectCategory from './SelectCategory';
 import Search from './Search';
-import { MdFavorite } from 'react-icons/md';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
 import { FaSearch } from 'react-icons/fa';
+import NavFavButton from './NavFavButton';
 
-const Nav = () => {
+const Nav = ({ toggleFavorites, selectTypeAllRecipes, searchRecipe }) => {
 	const [showSearch, setShowSearch] = useState(false);
 
 	function handleShowSearch() {
@@ -17,16 +17,12 @@ const Nav = () => {
 	return (
 		<div className={styles.navContainer}>
 			<nav className={styles.tabContainer}>
-				<button className={styles.navBtn}>
-					<MdFavorite />
-					Favorite
-				</button>
-
+				<NavFavButton toggleFavorites={toggleFavorites}/>
 				<button className={styles.navBtn} onClick={handleShowSearch}>
 					<FaSearch />
 					Cauta
 				</button>
-				<SelectCategory />
+				<SelectCategory selectTypeAllRecipes={selectTypeAllRecipes} />
 				<Link href='/newRecipe' passHref>
 					<button className={styles.navBtn}>
 						<BsFillPlusCircleFill />
@@ -34,7 +30,7 @@ const Nav = () => {
 					</button>
 				</Link>
 			</nav>
-			{showSearch && <Search />}
+			{showSearch && <Search searchRecipe={searchRecipe}/>}
 		</div>
 	);
 };

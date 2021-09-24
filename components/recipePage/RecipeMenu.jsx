@@ -3,8 +3,12 @@ import { AiFillEdit, AiFillDelete, AiFillCopy } from 'react-icons/ai';
 import { request } from 'graphql-request';
 import { DeleteRecipe } from '../../src/gql/mutations.graphql';
 import { useRouter } from 'next/router';
+import { useContext } from 'react';
+import { RecipeContext } from '../general/recipe.context';
 
-const RecipeMenu = ({ setEditRecipe, editRecipe, recipe }) => {
+const RecipeMenu = ({ setEditRecipe, editRecipe }) => {
+	const { recipe } = useContext(RecipeContext);
+	console.log(recipe);
 	const copyToClipboard = () => {
 		navigator.clipboard.writeText(window.location.href);
 		// add some sort of confirmation

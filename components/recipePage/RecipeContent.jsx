@@ -1,17 +1,25 @@
+import { useContext } from 'react';
 import styles from '../../styles/RecipeContent.module.scss';
-import Ingredient from '../Ingredient';
-import RecipeForm from '../newRecipe.js/RecipeForm';
 import Image from 'next/image';
-import ReactHtmlParser from 'react-html-parser';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 
-const RecipeContent = ({ editRecipe, recipe, setEditRecipe }) => {
+import Ingredient from '../Ingredient';
+import RecipeForm from '../newRecipe/RecipeForm';
+import ReactHtmlParser from 'react-html-parser';
+import { RecipeContext } from '../general/recipe.context';
+
+const RecipeContent = ({ editRecipe, setEditRecipe }) => {
+	const { recipe } = useContext(RecipeContext);
 	if (editRecipe)
 		return (
 			<>
 				<h5 className={styles.editTitle}>Editare reteta:</h5>
 
-				<RecipeForm recipe={recipe} editRecipe={editRecipe} setEditRecipe={setEditRecipe} />
+				<RecipeForm
+					recipe={recipe}
+					editRecipe={editRecipe}
+					setEditRecipe={setEditRecipe}
+				/>
 			</>
 		);
 

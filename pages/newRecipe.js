@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import RecipeForm from '../components/newRecipe.js/RecipeForm';
+import RecipeForm from '../components/newRecipe/RecipeForm';
 import styles from '../styles/Layout.module.scss';
 
 import HomeButton from '../components/general/HomeButton';
