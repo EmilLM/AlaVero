@@ -7,6 +7,8 @@ import { BsFillPlusCircleFill } from 'react-icons/bs';
 import { FaSearch } from 'react-icons/fa';
 import NavFavButton from './NavFavButton';
 
+import { SearchBox } from 'react-instantsearch-dom';
+
 const Nav = ({ toggleFavorites, selectTypeAllRecipes, searchRecipe }) => {
 	const [showSearch, setShowSearch] = useState(false);
 
@@ -17,7 +19,7 @@ const Nav = ({ toggleFavorites, selectTypeAllRecipes, searchRecipe }) => {
 	return (
 		<div className={styles.navContainer}>
 			<nav className={styles.tabContainer}>
-				<NavFavButton toggleFavorites={toggleFavorites}/>
+				<NavFavButton toggleFavorites={toggleFavorites} />
 				<button className={styles.navBtn} onClick={handleShowSearch}>
 					<FaSearch />
 					Cauta
@@ -31,6 +33,13 @@ const Nav = ({ toggleFavorites, selectTypeAllRecipes, searchRecipe }) => {
 				</Link>
 			</nav>
 			{showSearch && <Search searchRecipe={searchRecipe}/>}
+			{/* {showSearch && (
+				<SearchBox
+					translations={{
+						placeholder: 'Cauta reteta dorita...',
+					}}
+				/>
+			)} */}
 		</div>
 	);
 };

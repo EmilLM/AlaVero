@@ -11,7 +11,7 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 	const [formState, setFormState] = useState({
 		name: recipe?.name ?? '',
 		addedBy: recipe?.addedBy ?? 'Vero',
-		type: recipe?.type ?? 'mancare',
+		type: recipe?.type ?? 'Mancare',
 		favorite: recipe?.favorite ?? false,
 		img: recipe?.img ?? 'placeholder.png',
 		ingredients: recipe?.ingredients ?? '',
@@ -46,7 +46,6 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 
 	const isValid = name && ingredients && cooking;
 
-	
 	function handleChange(e) {
 		const input = e.target.value;
 		setFormState({
@@ -77,6 +76,12 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 		setFormState({
 			...formState,
 			favorite: !favorite,
+		});
+	}
+	function handleSelect(e) {
+		setFormState({
+			...formState,
+			type: e.target.value,
 		});
 	}
 
@@ -156,7 +161,7 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 						/>
 					</label>
 
-					<select value={type} onChange={handleChange} name='type'>
+					<select value={type} onChange={handleSelect} name='type'>
 						<option disabled>Categorie:</option>
 						<option value='prajitura'>Prajitura</option>
 						<option value='mancare'>Mancare</option>

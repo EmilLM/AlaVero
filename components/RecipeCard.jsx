@@ -1,4 +1,3 @@
-
 import styles from '../styles/RecipeCard.module.scss';
 import Image from 'next/image';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
@@ -16,7 +15,15 @@ const RecipeCard = ({ recipe }) => {
 		<Link href={`/recipes/${encodeURIComponent(name)}`} passHref>
 			<div className={styles.card}>
 				<div className={styles.cardImage}>
-					<Image src={'/' + img} alt='ph' layout='fill' />
+					<Image
+						src={'/' + img}
+						alt='ph'
+						layout='fill'
+						// placeholder='blur'
+						// blurDataURL={'/' + img}
+						// loading='lazy'
+						priority
+					/>
 				</div>
 				<div className={styles.cardInfo}>
 					<div className={styles.cardName}>{name}</div>

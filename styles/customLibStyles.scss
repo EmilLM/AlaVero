@@ -1,0 +1,71 @@
+// .prepEditor {
+// 	ol,
+// 	ul {
+// 		padding-left: 15px;
+// 		margin: 5px 0;
+// 	}
+// 	p {
+// 		padding-left: 0px;
+// 		margin: 5px 0;
+// 	}
+
+// 	label {
+// 		display: none !important;
+// 	}
+// }
+.ck-editor__editable {
+	min-height: 150px;
+}
+
+// .ais-SearchBox {
+// 	min-width: 300px;
+// 	width: 50% !important;
+
+// 	form {
+// 		border-radius: 5px;
+// 	}
+// 	input {
+// 		position: relative !important;
+// 		z-index: 1 !important;
+// 		font-size: 1.5rem !important;
+// 		background: none !important;
+// 		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+// 		&:focus {
+// 			border: 3px solid #5551ff;
+// 		}
+// 	}
+// }
+// .ais-Hits-item {
+// 	background: none;
+// 	box-shadow: none;
+// 	padding: 0 !important;
+// 	padding-bottom: 30px !important;
+// }
+
+.ais-SearchBox {
+	width: 100%;
+	min-width: 300px;
+	
+	form {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	input {
+		justify-self: center;
+		width: 100%;
+		min-height: 50px;
+		font-size: 1.5rem;
+		padding-left: 10px;
+		border-radius: 5px;
+		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+		&:focus {
+			border: 3px solid #5551ff;
+		}
+		@media screen and (min-width: 768px) {
+			width: 50%;
+		}
+	}
+}

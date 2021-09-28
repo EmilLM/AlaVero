@@ -47,6 +47,8 @@ const RecipeContent = ({ editRecipe, setEditRecipe }) => {
 					</div>
 					<div className={styles.imgBox}>
 						<Image src={'/' + img} alt='ph' layout='fill' />
+						{/* <img src={'/' + img} alt='ph' /> */}
+
 						<div className={styles.favIcon}>
 							{favorite ? <MdFavorite /> : <MdFavoriteBorder />}
 						</div>

@@ -2,20 +2,37 @@ import Head from 'next/head';
 import { request } from 'graphql-request';
 import { useState, useEffect } from 'react';
 
+import algoliasearch from 'algoliasearch';
+import { InstantSearch } from 'react-instantsearch-dom';
+
 import Layout from '../components/general/Layout';
 import Nav from '../components/Nav';
 import Recipes from '../components/Recipes';
 import styles from '../styles/Layout.module.scss';
 import { RecipeCardQuery } from '../src/gql/queries.graphql';
 
+const searchClient = algoliasearch(
+	'GETG0N5FXB',
+	'f6a8d6a73d050d50551a6fdf84104f07'
+);
+
+// const client = algoliasearch('GETG0N5FXB', '1a2dcb6d770d6c4edf0fb1e26a7009c2');
+
+// const index = client.initIndex('AlaVero_recipes');
+
 export default function Home({ allRecipes, favRecipes }) {
+	// index.saveObjects(allRecipes, {
+	// 	// All the following parameters are optional
+	// 	autoGenerateObjectIDIfNotExist: true,
+	// 	// any other requestOptions
+	// });
+
 	const [recipes, setRecipes] = useState(allRecipes);
 	function toggleFavorites(status) {
 		if (status) setRecipes(favRecipes);
 		if (!status) setRecipes(allRecipes);
-		console.log('fav recipes ', recipes);
 	}
-
+	// ! use if every recipe is favorite means isFav is true if some are not favorite isFav false
 	function selectTypeAllRecipes(type) {
 		if (type === 'Prajituri') {
 			const cookies = allRecipes.filter(
@@ -38,7 +55,9 @@ export default function Home({ allRecipes, favRecipes }) {
 
 	function searchRecipe(input) {
 		//! find better algo
-		const results = allRecipes.filter((recipe) => recipe.name.includes(input));
+		const results = allRecipes.filter(
+			(recipe) => recipe.name.includes(input) || recipe.addedBy.includes(input)
+		);
 		console.log('results', results);
 		if (results && results.length !== 0) setRecipes(results);
 	}
@@ -51,17 +70,24 @@ export default function Home({ allRecipes, favRecipes }) {
 				<title>A la Vero Cookbook</title>
 				<meta name='description' content='Cookbook recipes' />
 				<link rel='icon' href='/favicon.ico' />
+				{/* search input styles */}
 			</Head>
 			<Layout>
 				<header className={styles.header}>
 					<h1> &Agrave; la Vero</h1>
 				</header>
-				<Nav
-					toggleFavorites={toggleFavorites}
-					selectTypeAllRecipes={selectTypeAllRecipes}
-					searchRecipe={searchRecipe}
-				/>
-				<Recipes recipes={recipes} />
+				<InstantSearch
+					searchClient={searchClient}
+					indexName='AlaVero_recipes'
+					stalledSearchDelay={500}
+				>
+					<Nav
+						toggleFavorites={toggleFavorites}
+						selectTypeAllRecipes={selectTypeAllRecipes}
+						searchRecipe={searchRecipe}
+					/>
+					<Recipes recipes={recipes} />
+				</InstantSearch>
 				<footer className={styles.footer}>
 					Site retete @&Agrave; La Vero <span>{year}</span>
 				</footer>

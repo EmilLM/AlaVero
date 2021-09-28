@@ -1,13 +1,13 @@
-add localStorage/cookie for addNewRecipe
+
 add ingredients one by one
 react virtualized / lazy load recipes
-add context
 add delete confirmation
-add search feature
 
-
+back to top button on main page
 add favorite/unfavorite option on card
 
 add different card display options 
 
+add security : secure inputs, requests limiter etc check chataway
 
+add data loading & errors ui

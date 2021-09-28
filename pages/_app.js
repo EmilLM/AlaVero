@@ -1,5 +1,5 @@
 import '../styles/globals.scss';
-import '../styles/CKEditor.scss';
+import '../styles/customLibStyles.scss';
 import { ApolloProvider } from '@apollo/client';
 import {client} from '../src/services/apollo-client';
 

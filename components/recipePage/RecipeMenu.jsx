@@ -1,33 +1,14 @@
 import styles from '../../styles/Buttons.module.scss';
 import { AiFillEdit, AiFillDelete, AiFillCopy } from 'react-icons/ai';
-import { request } from 'graphql-request';
-import { DeleteRecipe } from '../../src/gql/mutations.graphql';
-import { useRouter } from 'next/router';
-import { useContext } from 'react';
-import { RecipeContext } from '../general/recipe.context';
 
-const RecipeMenu = ({ setEditRecipe, editRecipe }) => {
-	const { recipe } = useContext(RecipeContext);
-	console.log(recipe);
+
+const RecipeMenu = ({ setEditRecipe, editRecipe, handleDelete }) => {
 	const copyToClipboard = () => {
 		navigator.clipboard.writeText(window.location.href);
 		// add some sort of confirmation
 	};
 
-	const router = useRouter();
-	const eraseRecipe = async () => {
-		try {
-			const res = await request(
-				'http://localhost:3000/api/graphql',
-				DeleteRecipe,
-				{ recipeName: recipe.name }
-			);
-			router.push('/');
-			console.log(res);
-		} catch (err) {
-			console.error('deleting error', err.message);
-		}
-	};
+	
 	return (
 		<div className={styles.menu}>
 			<ul>
@@ -38,7 +19,7 @@ const RecipeMenu = ({ setEditRecipe, editRecipe }) => {
 					</a>
 				</li>
 				<li className={styles.midOption}>
-					<a onClick={eraseRecipe}>
+					<a onClick={handleDelete}>
 						<AiFillDelete />
 						Sterge
 					</a>

@@ -1,6 +1,10 @@
 .container {
-	margin: 3em 0;
+	margin-top: 3em;
 	min-height: 300px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
 	// display: grid;
 	// row-gap: 25px;
 	// grid-template-columns: repeat(1, 85%);
@@ -12,13 +16,17 @@
 	// @media screen and (min-width: 768px) {
 	// 	grid-template-columns: repeat(4, 23%);
 	// }
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: center;
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		align-items: center;
+		list-style-type: none;
+	}
 }
 .card {
-	margin: 0 1em 2em 1em;
+	margin: 0 1em 3.5em 1em;
 	min-width: 300px;
 	max-width: 330px;
 	background: white;
