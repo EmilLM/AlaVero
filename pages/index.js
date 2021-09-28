@@ -16,7 +16,6 @@ const searchClient = algoliasearch(
 	'f6a8d6a73d050d50551a6fdf84104f07'
 );
 
-// const client = algoliasearch('GETG0N5FXB', '1a2dcb6d770d6c4edf0fb1e26a7009c2');
 
 // const index = client.initIndex('AlaVero_recipes');
 
