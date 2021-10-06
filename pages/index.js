@@ -69,7 +69,7 @@ export default function Home({ allRecipes, favRecipes }) {
 	return (
 		<>
 			<Head>
-				<title>A la Vero Cookbook</title>
+				<title>A la Vero Recipes</title>
 				<meta name='description' content='Cookbook recipes' />
 				<link rel='icon' href='/favicon.ico' />
 				{/* search input styles */}
