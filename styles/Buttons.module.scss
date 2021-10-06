@@ -78,3 +78,32 @@
 		}
 	}
 }
+
+.backTop {
+	position: fixed;
+	z-index: 999999;
+	bottom: 50px;
+	right: 5%;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: navy;
+	display: grid;
+	place-content: center;
+	color: white;
+	font-size: 1.5rem;
+	margin-top: 5px;
+	cursor: pointer;
+	transition: all 0.1s;
+	&:hover {
+		color: navy;
+		background: white;
+	}
+	&:active {
+		background: lightblue;
+	}
+}
+
+.displayNone {
+	display: none;
+}

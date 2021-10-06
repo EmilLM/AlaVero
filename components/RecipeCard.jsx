@@ -7,10 +7,15 @@ const RecipeCard = ({ recipe }) => {
 	// const [favorite, setFavorite] = useState(false);
 	const { name, favorite, img, addedBy } = recipe;
 
+	// const [isFavorite, setIsFavorite] = useState(favorite)
+
 	function handleFavorite(e) {
 		e.stopPropagation();
-		setFavorite((prevState) => !prevState);
+		setIsFavorite((prevState) => !prevState);
+		// use apollo client for cache update when fav/unfav
 	}
+
+	
 	return (
 		<Link href={`/recipes/${encodeURIComponent(name)}`} passHref>
 			<div className={styles.card}>
@@ -22,7 +27,7 @@ const RecipeCard = ({ recipe }) => {
 						// placeholder='blur'
 						// blurDataURL={'/' + img}
 						// loading='lazy'
-						priority
+						// priority
 					/>
 				</div>
 				<div className={styles.cardInfo}>

@@ -1,13 +1,9 @@
 
 add ingredients one by one
 react virtualized / lazy load recipes
-add delete confirmation
 
-back to top button on main page
-add favorite/unfavorite option on card
-
-add different card display options 
+add favorite/unfavorite option on card!
+add burger menu option on small screens and when scroll down 
 
 add security : secure inputs, requests limiter etc check chataway
-
 add data loading & errors ui

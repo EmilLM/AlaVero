@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { request } from 'graphql-request';
-import { useState, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import algoliasearch from 'algoliasearch';
 import { InstantSearch } from 'react-instantsearch-dom';
@@ -10,12 +10,13 @@ import Nav from '../components/Nav';
 import Recipes from '../components/Recipes';
 import styles from '../styles/Layout.module.scss';
 import { RecipeCardQuery } from '../src/gql/queries.graphql';
+import BackTop from '../components/general/BackTop';
+import BurgerMenu from '../components/general/BurgerMenu';
 
 const searchClient = algoliasearch(
 	'GETG0N5FXB',
 	'f6a8d6a73d050d50551a6fdf84104f07'
 );
-
 
 // const index = client.initIndex('AlaVero_recipes');
 
@@ -57,11 +58,13 @@ export default function Home({ allRecipes, favRecipes }) {
 		const results = allRecipes.filter(
 			(recipe) => recipe.name.includes(input) || recipe.addedBy.includes(input)
 		);
-		console.log('results', results);
 		if (results && results.length !== 0) setRecipes(results);
 	}
 
 	const year = new Date().getFullYear();
+	const headerRef = useRef(null);
+	const scrollToRef = () =>
+		headerRef.current?.scrollIntoView({ behavior: 'smooth' });
 
 	return (
 		<>
@@ -72,9 +75,10 @@ export default function Home({ allRecipes, favRecipes }) {
 				{/* search input styles */}
 			</Head>
 			<Layout>
-				<header className={styles.header}>
+				<header className={styles.header} ref={headerRef}>
 					<h1> &Agrave; la Vero</h1>
 				</header>
+				<BackTop scrollToRef={scrollToRef} />
 				<InstantSearch
 					searchClient={searchClient}
 					indexName='AlaVero_recipes'

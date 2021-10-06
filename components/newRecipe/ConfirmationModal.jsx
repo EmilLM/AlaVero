@@ -2,7 +2,7 @@ import styles from '../../styles/ConfirmationModal.module.scss';
 
 const ConfirmationModal = ({ handleDelete, eraseRecipe }) => {
 	return (
-		<div className={styles.layer}>
+		<div className={styles.overlay}>
 			<div className={styles.modal}>
 				<h2>Sigur vrei sa stergi reteta?</h2>
 				<div className={styles.buttons}>
