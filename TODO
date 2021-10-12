@@ -7,3 +7,5 @@ add burger menu option on small screens and when scroll down
 
 add security : secure inputs, requests limiter etc check chataway
 add data loading & errors ui
+
+MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 open listeners added to [NativeConnection]. Use emitter.setMaxListeners() to increase limit

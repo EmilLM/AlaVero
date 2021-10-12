@@ -1,18 +1,4 @@
-// .prepEditor {
-// 	ol,
-// 	ul {
-// 		padding-left: 15px;
-// 		margin: 5px 0;
-// 	}
-// 	p {
-// 		padding-left: 0px;
-// 		margin: 5px 0;
-// 	}
 
-// 	label {
-// 		display: none !important;
-// 	}
-// }
 .ck-editor__editable {
 	min-height: 150px;
 }
@@ -24,50 +10,67 @@
 // 	form {
 // 		border-radius: 5px;
 // 	}
+// 	
+// }
+.ais-Hits-item {
+	background: none;
+	box-shadow: none;
+	padding: 0 !important;
+	// padding-bottom: 30px !important;
+}
+
+// styling for elements without importing algolia styles
+// .ais-SearchBox {
+// 	width: 100%;
+// 	min-width: 300px;
+// 	padding: 0 2vw;
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	form {
+// 		width: 100%;
+// 		max-width: 600px;
+// 		position: relative;
+// 		@media screen and (min-width: 768px) {
+// 			width: 50%;
+// 		}
+// 	}
 // 	input {
-// 		position: relative !important;
-// 		z-index: 1 !important;
-// 		font-size: 1.5rem !important;
-// 		background: none !important;
+// 		justify-self: center;
+// 		width: 100%;
+// 		min-height: 50px;
+// 		font-size: 1.5rem;
+// 		padding-left: 20px;
+// 		border-radius: 5px;
 // 		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
 // 		&:focus {
 // 			border: 3px solid #5551ff;
 // 		}
+// 		// @media screen and (min-width: 768px) {
+// 		// 	width: 50%;
+// 		// }
+// 	}
+// 	button {
+// 		background: none !important;
+// 		border: none !important;
+// 	}
+// 	.ais-SearchBox-reset {
+// 		cursor: pointer;
+// 		svg {
+// 			display: none;
+// 		}
+// 	}
+// 	.ais-SearchBox-submit {
+// 		position: absolute;
+// 		left: 10px;
+// 		font-size: 1.5rem;
+// 		color: navy;
+// 		svg {
+// 			font-size: 1.5rem !important;
+// 			color: navy !important;
+// 		}
 // 	}
 // }
-// .ais-Hits-item {
-// 	background: none;
-// 	box-shadow: none;
-// 	padding: 0 !important;
-// 	padding-bottom: 30px !important;
-// }
-
-.ais-SearchBox {
-	width: 100%;
-	min-width: 300px;
-	
-	form {
-		width: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	input {
-		justify-self: center;
-		width: 100%;
-		min-height: 50px;
-		font-size: 1.5rem;
-		padding-left: 10px;
-		border-radius: 5px;
-		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-
-		&:focus {
-			border: 3px solid #5551ff;
-		}
-		@media screen and (min-width: 768px) {
-			width: 50%;
-		}
-	}
-}
 
 

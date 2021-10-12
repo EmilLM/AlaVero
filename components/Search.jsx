@@ -1,29 +1,26 @@
-import { useEffect, useState } from 'react';
 import styles from '../styles/Nav.module.scss';
-
-const Search = ({ searchRecipe }) => {
-	const [searchInput, setSearchInput] = useState('');
-
-	function handleChange(e) {
-		const input = e.target.value;
-		setSearchInput(input.charAt(0).toUpperCase() + input.slice(1));
-	}
-
-	useEffect(() => {
-		searchRecipe(searchInput);
-	}, [searchInput]);
-
+import { connectSearchBox } from 'react-instantsearch-dom';
+import { FcSearch } from 'react-icons/fc';
+const SearchBox = ({ currentRefinement, isSearchStalled, refine }) => {
 	return (
 		<div className={styles.searchContainer}>
-			<input
-				type='text'
-				value={searchInput}
-				onChange={handleChange}
-				placeholder='Cauta reteta dupa nume'
-				className={styles.searchInput}
-			/>
+			<form noValidate role='search'>
+				<input
+					type='search'
+					value={currentRefinement}
+					onChange={(event) => refine(event.currentTarget.value)}
+					placeholder='Cauta reteta dorita...'
+					className={styles.searchInput}
+				/>
+				{/* <button onClick={() => refine('')}>Reset query</button>  */}
+				{/* {isSearchStalled ? 'My search is stalled' : ''} */}
+				<button type='submit' className={styles.searchButton}>
+					<FcSearch />
+				</button>
+			</form>
 		</div>
 	);
 };
 
+const Search = connectSearchBox(SearchBox);
 export default Search;

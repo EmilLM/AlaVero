@@ -3,9 +3,9 @@ import Image from 'next/image';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 import Link from 'next/link';
 
-const RecipeCard = ({ recipe }) => {
+const RecipeCard = ({ hit}) => {
 	// const [favorite, setFavorite] = useState(false);
-	const { name, favorite, img, addedBy } = recipe;
+	const { name, favorite, img, addedBy } = hit;
 
 	// const [isFavorite, setIsFavorite] = useState(favorite)
 

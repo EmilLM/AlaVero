@@ -2,8 +2,8 @@ import Head from 'next/head';
 import { request } from 'graphql-request';
 import { useState, useRef, useEffect } from 'react';
 
-import algoliasearch from 'algoliasearch';
 import { InstantSearch } from 'react-instantsearch-dom';
+import { algoliaClient, index } from '../src/services/algolia-search';
 
 import Layout from '../components/general/Layout';
 import Nav from '../components/Nav';
@@ -11,21 +11,10 @@ import Recipes from '../components/Recipes';
 import styles from '../styles/Layout.module.scss';
 import { RecipeCardQuery } from '../src/gql/queries.graphql';
 import BackTop from '../components/general/BackTop';
-import BurgerMenu from '../components/general/BurgerMenu';
-
-const searchClient = algoliasearch(
-	'GETG0N5FXB',
-	'f6a8d6a73d050d50551a6fdf84104f07'
-);
-
-// const index = client.initIndex('AlaVero_recipes');
 
 export default function Home({ allRecipes, favRecipes }) {
-	// index.saveObjects(allRecipes, {
-	// 	// All the following parameters are optional
-	// 	autoGenerateObjectIDIfNotExist: true,
-	// 	// any other requestOptions
-	// });
+	// algolia addto index
+	index.saveObjects(allRecipes);
 
 	const [recipes, setRecipes] = useState(allRecipes);
 	function toggleFavorites(status) {
@@ -71,8 +60,15 @@ export default function Home({ allRecipes, favRecipes }) {
 			<Head>
 				<title>A la Vero Recipes</title>
 				<meta name='description' content='Cookbook recipes' />
+				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<link rel='icon' href='/favicon.ico' />
 				{/* search input styles */}
+				{/* <link
+					rel='stylesheet'
+					href='https://cdn.jsdelivr.net/npm/instantsearch.css@7.4.5/themes/satellite-min.css'
+					integrity='sha256-TehzF/2QvNKhGQrrNpoOb2Ck4iGZ1J/DI4pkd2oUsBc='
+					crossOrigin='anonymous'
+				/> */}
 			</Head>
 			<Layout>
 				<header className={styles.header} ref={headerRef}>
@@ -80,7 +76,7 @@ export default function Home({ allRecipes, favRecipes }) {
 				</header>
 				<BackTop scrollToRef={scrollToRef} />
 				<InstantSearch
-					searchClient={searchClient}
+					searchClient={algoliaClient}
 					indexName='AlaVero_recipes'
 					stalledSearchDelay={500}
 				>
@@ -104,6 +100,11 @@ export async function getStaticProps() {
 		'http://localhost:3000/api/graphql',
 		RecipeCardQuery
 	);
+	const editedRecipes = getRecipes.map((recipe) => {
+		const objectID = recipe.id;
+		recipe.objectID = objectID;
+	});
+
 	const onlyFavorites = getRecipes.filter((recipe) => recipe.favorite === true);
 
 	return {
