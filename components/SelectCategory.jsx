@@ -2,15 +2,14 @@ import { useState, useEffect } from 'react';
 import styles from '../styles/Nav.module.scss';
 import { FaArrowAltCircleDown } from 'react-icons/fa';
 import { useClickOutside } from '../src/utils/hooks';
+import { connectMenu } from 'react-instantsearch-dom';
 
-const SelectCategory = ({ selectTypeAllRecipes }) => {
+const SelectMenu = ({ currentRefinement, refine, items }) => {
 	const [showOptions, setShowOptions] = useState(false);
-	const [selectState, setSelectState] = useState('Categorii');
+	// const [selectState, setSelectState] = useState('Categorii');
 	const optionsRef = useClickOutside(() => setShowOptions(false));
 
-	useEffect(() => {
-		selectTypeAllRecipes(selectState);
-	}, [selectState]);
+	//
 
 	return (
 		<button
@@ -19,30 +18,24 @@ const SelectCategory = ({ selectTypeAllRecipes }) => {
 			ref={optionsRef}
 		>
 			<FaArrowAltCircleDown className={showOptions && styles.rotateArrow} />
-			{selectState}
+			{!currentRefinement ? 'Categorii' : currentRefinement}
 			{showOptions && (
 				<div className={styles.selectOptions}>
 					<ul>
-						<li onClick={() => setSelectState('Toate')}>Toate</li>
+						<li onClick={() => refine('')}>Toate</li>
 
-						<li
-							onClick={() => setSelectState('Prajituri')}
-							className={styles.midLi}
-						>
+						<li onClick={() => refine('Prajitura')} className={styles.midLi}>
 							Prajituri
 						</li>
-						<li
-							onClick={() => setSelectState('Mancare')}
-							className={styles.midLi}
-						>
+						<li onClick={() => refine('Mancare')} className={styles.midLi}>
 							Mancare
 						</li>
-						<li onClick={() => setSelectState('Sosuri')}>Sosuri</li>
+						<li onClick={() => refine('Sos')}>Sosuri</li>
 					</ul>
 				</div>
 			)}
 		</button>
 	);
 };
-
+const SelectCategory = connectMenu(SelectMenu);
 export default SelectCategory;

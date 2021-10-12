@@ -17,7 +17,7 @@ const Nav = ({ toggleFavorites, selectTypeAllRecipes }) => {
 	return (
 		<div className={styles.navContainer}>
 			<nav className={styles.tabContainer}>
-				<NavFavButton toggleFavorites={toggleFavorites} />
+				<NavFavButton attribute='favorite' value={true} label='fav' />
 				<button className={styles.navBtn} onClick={handleShowSearch}>
 					<FaSearch />
 					Cauta
@@ -28,7 +28,7 @@ const Nav = ({ toggleFavorites, selectTypeAllRecipes }) => {
 						Adauga
 					</button>
 				</Link>
-				<SelectCategory selectTypeAllRecipes={selectTypeAllRecipes} />
+				<SelectCategory defaultRefinement='' attribute='type' />
 			</nav>
 			{showSearch && <Search />}
 		</div>

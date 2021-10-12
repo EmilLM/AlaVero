@@ -1,22 +1,17 @@
-import { useEffect, useState } from 'react';
 import styles from '../styles/Nav.module.scss';
 
 import { CgDisplayGrid } from 'react-icons/cg';
 import { MdFavorite } from 'react-icons/md';
+import { connectToggleRefinement } from 'react-instantsearch-dom';
 
-const NavFavButton = ({ toggleFavorites }) => {
-	const [isFavorite, setIsFavorite] = useState(false);
+const FavButton = ({ currentRefinement, refine }) => {
 
 	function handleClick() {
-		setIsFavorite((prev) => !prev);
+		refine(!currentRefinement);
 	}
-	useEffect(() => {
-		toggleFavorites(isFavorite);
-	}, [isFavorite]);
-
 	return (
 		<button className={styles.navBtn} onClick={handleClick}>
-			{isFavorite ? (
+			{currentRefinement ? (
 				<>
 					<CgDisplayGrid />
 					Toate
@@ -30,5 +25,5 @@ const NavFavButton = ({ toggleFavorites }) => {
 		</button>
 	);
 };
-
+const NavFavButton = connectToggleRefinement(FavButton);
 export default NavFavButton;
