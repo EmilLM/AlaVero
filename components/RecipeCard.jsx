@@ -3,11 +3,8 @@ import Image from 'next/image';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 import Link from 'next/link';
 
-const RecipeCard = ({ hit}) => {
-	// const [favorite, setFavorite] = useState(false);
+const RecipeCard = ({ hit }) => {
 	const { name, favorite, img, addedBy } = hit;
-
-	// const [isFavorite, setIsFavorite] = useState(favorite)
 
 	function handleFavorite(e) {
 		e.stopPropagation();
@@ -15,7 +12,6 @@ const RecipeCard = ({ hit}) => {
 		// use apollo client for cache update when fav/unfav
 	}
 
-	
 	return (
 		<Link href={`/recipes/${encodeURIComponent(name)}`} passHref>
 			<div className={styles.card}>
@@ -27,7 +23,7 @@ const RecipeCard = ({ hit}) => {
 						// placeholder='blur'
 						// blurDataURL={'/' + img}
 						// loading='lazy'
-						// priority
+						priority
 					/>
 				</div>
 				<div className={styles.cardInfo}>

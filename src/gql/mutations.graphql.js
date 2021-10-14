@@ -3,7 +3,8 @@ import { gql } from 'graphql-request';
 export const PostRecipe = gql`
 	mutation AddNewRecipe($input: createRecipe) {
 		newRecipe(input: $input) {
-			name
+			name,
+			id
 		}
 	}
 `;

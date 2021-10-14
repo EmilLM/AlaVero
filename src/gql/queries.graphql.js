@@ -22,6 +22,7 @@ export const RecipePageQuery = `
 			cooking
 			preparation
 			ingredients
+			id
 		}
 	}
 `;

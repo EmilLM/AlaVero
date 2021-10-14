@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { PostRecipe, UpdateRecipe } from '../../src/gql/mutations.graphql';
 import { request } from 'graphql-request';
 import { useRouter } from 'next/router';
+import { index } from '../../src/services/algolia-search';
 
 // try using react-hook-form
 const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
@@ -94,6 +95,7 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 				PostRecipe,
 				{ input: formState }
 			);
+			await index.saveObject({ ...formState, objectID: newRecipe.id });
 			localStorage.removeItem('newRecipe');
 			router.push('/recipes/' + newRecipe.name);
 		} catch (err) {
@@ -108,6 +110,10 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 				UpdateRecipe,
 				{ updateRecipeName: recipe.name, updateRecipeInput: formState }
 			);
+			await index.partialUpdateObject({
+				...formState,
+				objectID: recipe.id,
+			});
 			localStorage.removeItem(recipe.name);
 			router.push('/recipes/' + updateRecipe.name);
 			setEditRecipe(false);
