@@ -28,7 +28,7 @@
 .card {
 	margin: 0 1em 3.5em 1em;
 	min-width: 300px;
-	max-width: 330px;
+	max-width: 300px;
 	background: white;
 	border-radius: 5px;
 	display: flex;
@@ -64,9 +64,10 @@
 		align-items: center;
 		justify-content: space-between;
 		.cardName {
-			height: 100px;
-			align-self: center;
-			line-height: 100px;
+			min-height: 100px;
+			text-align: center;
+			display: flex;
+			align-items: center;
 		}
 		.cardDesc {
 			width: 100%;

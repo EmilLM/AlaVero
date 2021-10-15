@@ -7,6 +7,7 @@ export const RecipeCardQuery = `
 			type
 			img
 			id
+			createdAt
 		}
 	}
 `;

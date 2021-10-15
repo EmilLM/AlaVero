@@ -4,23 +4,50 @@
 	height: 100%;
 	background: rgba(46, 46, 46, 0.425);
 	z-index: 999;
-	display: grid;
-	place-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	.modal {
+		max-height: 300px;
 		height: 300px;
-		width: 500px;
+		width: 90%;
+		min-width: 200px;
+		max-width: 500px;
 		background: white;
-		border-radius: 10px;
-		padding: 2em 3em;
+		border-radius: 5px;
+		padding: 1em 1.5em;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: space-evenly;
-		margin-bottom: 40%;
-		h2 {
-			color: navy;
-			text-align: center;
+		justify-content: space-around;
+		position: relative;
+		margin-bottom: 70%;
+		border: 1px solid rgb(0, 189, 252);
+		box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+		@media screen and (min-width: 576px) {
+			margin-bottom: 10%;
+			padding: 2em;
 		}
+		.info {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-evenly;
+			height: 60%;
+			h2 {
+				color: navy;
+				text-align: center;
+			}
+			h3 {
+				color: red;
+				text-align: center;
+			}
+			svg {
+				font-size: 2rem;
+				color: navy;
+			}
+		}
+
 		.buttons {
 			width: 100%;
 			max-width: 350px;
@@ -29,17 +56,50 @@
 			button {
 				background: rgb(25, 100, 110);
 				border: none;
-				padding: 1em 2em;
+				padding: 0.5em 2em;
 				border-radius: 10px;
-				color: navy;
+				color: white;
 				font-size: 1.2rem;
 				font-weight: bold;
 				cursor: pointer;
+				text-transform: uppercase;
+				font-weight: bold;
+				display: flex;
+				align-items: center;
 				&:hover {
 					background: navy;
 					color: white;
 				}
+				svg {
+					font-size: 1.5rem;
+				}
 			}
+		}
+		.close {
+			border: none;
+			background: none;
+			cursor: pointer;
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			font-size: 1.5rem;
+			color: navy;
+
+			&:hover {
+				color: rgb(25, 100, 110);
+			}
+		}
+	}
+}
+
+.modal {
+	animation: fade-in 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+	@keyframes fade-in {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
 		}
 	}
 }

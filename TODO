@@ -1,11 +1,13 @@
 
 add ingredients one by one
-react virtualized / lazy load recipes
+react virtualized / lazy load recipes || limit(pagination) on graphql
 
 add favorite/unfavorite option on card!
 add burger menu option on small screens and when scroll down 
 
 add security : secure inputs, requests limiter etc check chataway
+more schema validation
 add data loading & errors ui
+add ? for guides on inputs as a tooltip without state?
 
-MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 open listeners added to [NativeConnection]. Use emitter.setMaxListeners() to increase limit
+MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 open listeners added to [NativeConnection]. Use emitter.setMaxListeners() to increase limit 

@@ -15,6 +15,8 @@ import ConfirmationModal from '../newRecipe/ConfirmationModal';
 const RecipePageInfo = () => {
 	const [editRecipe, setEditRecipe] = useState(false);
 	const [confirmDelete, setConfirmDelete] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState('');
 
 	const { recipe } = useContext(RecipeContext);
 
@@ -23,16 +25,19 @@ const RecipePageInfo = () => {
 
 	const eraseRecipe = async () => {
 		try {
+			setIsLoading(true);
 			await request('http://localhost:3000/api/graphql', DeleteRecipe, {
 				recipeName: recipe.name,
 			});
 			await index.deleteObject(recipe.id).wait();
-			// !!! add loading indicator for deletion
 			localStorage.removeItem(recipe.name);
 			setConfirmDelete(false);
+			setIsLoading(false);
 			router.push('/');
 		} catch (err) {
 			console.error('deleting error', err.message);
+			setIsLoading(false);
+			setError(err.message);
 		}
 	};
 	return (
@@ -46,8 +51,10 @@ const RecipePageInfo = () => {
 			</MenuButton>
 			{confirmDelete && (
 				<ConfirmationModal
-					handleDelete={handleDelete}
+					setConfirmDelete={setConfirmDelete}
 					eraseRecipe={eraseRecipe}
+					isLoading={isLoading}
+					error={error}
 				/>
 			)}
 			<HomeButton />

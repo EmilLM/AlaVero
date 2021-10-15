@@ -34,12 +34,11 @@ const RecipeContent = ({ editRecipe, setEditRecipe }) => {
 		<>
 			<div className={styles.contentHeader}>
 				<h2 className={styles.recipeName}>{recipe.name}</h2>
-				<div className={styles.subtitle}>
+				<div className={styles.subTitle}>
 					{type} &Agrave; la <b>{addedBy}</b>
 				</div>
 			</div>
-
-			<article className={styles.recipe}>
+			<div className={styles.recipe}>
 				<section className={styles.ingredientsContainer}>
 					<div className={styles.ingredientsBox}>
 						<h6>Ingrediente:</h6>
@@ -47,7 +46,6 @@ const RecipeContent = ({ editRecipe, setEditRecipe }) => {
 					</div>
 					<div className={styles.imgBox}>
 						<Image src={'/' + img} alt='ph' layout='fill' />
-						{/* <img src={'/' + img} alt='ph' /> */}
 
 						<div className={styles.favIcon}>
 							{favorite ? <MdFavorite /> : <MdFavoriteBorder />}
@@ -66,7 +64,7 @@ const RecipeContent = ({ editRecipe, setEditRecipe }) => {
 
 					<p>{cooking}</p>
 				</div>
-			</article>
+			</div>
 		</>
 	);
 };

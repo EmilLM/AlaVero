@@ -129,7 +129,10 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 			<section className={styles.smallInputs}>
 				<div className={styles.textInputs}>
 					<label htmlFor='name'>
-						Denumire:
+						<di className={styles.labelInfo}>
+							<p>Denumire:</p>
+							<span>?</span>
+						</di>
 						<input
 							type='text'
 							name='name'

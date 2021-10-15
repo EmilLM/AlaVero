@@ -1,3 +1,13 @@
+@mixin buttongBg() {
+	background: white;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	&:hover {
+		color: white;
+		background: navy;
+	}
+}
 .backButton {
 	text-decoration: none;
 	position: fixed;
@@ -5,22 +15,11 @@
 	right: 3%;
 	color: navy;
 	font-size: 2rem;
-
-	z-index: 99;
-	&:hover {
-		color: rgb(98, 230, 253);
+	z-index: 9999;
+	@include buttongBg();
+	svg {
+		margin: 8px 0px 0px 10px;
 	}
-	// &::before {
-	// 	position: absolute;
-	// 	content: '';
-	// 	top: -5px;
-	// 	right: -6px;
-	// 	width: 60px;
-	// 	height: 60px;
-	// 	border-radius: 50%;
-	// 	background: rgb(98, 230, 253);
-	// 	z-index: -1;
-	// }
 }
 
 .menuButton {
@@ -34,15 +33,13 @@
 	cursor: pointer;
 	color: navy;
 	z-index: 9999;
-	svg {
-		&:hover {
-			color: rgb(98, 230, 253);
-		}
-	}
+	padding-top: 5px;
+	@include buttongBg();
 }
 
 .menu {
 	position: absolute;
+	top: 60px;
 	min-width: 200px;
 	background: white;
 	border-radius: 5px;
