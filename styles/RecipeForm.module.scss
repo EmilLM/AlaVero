@@ -32,9 +32,6 @@
 			@include fontStyles();
 			.labelInfo {
 				display: flex;
-				span {
-					margin-left: 30px;
-				}
 			}
 		}
 		input {
@@ -66,11 +63,23 @@
 		.editor {
 			margin-top: 1em;
 			min-height: 250px;
-
+			.labelInfo {
+				display: flex;
+				svg {
+					font-size: 1.5rem;
+				}
+				p {
+					font-weight: bold;
+				}
+			}
 			h6 {
 				@include fontStyles();
 				margin-bottom: 0.5em;
 			}
+			svg {
+				margin-bottom: 0.5em;
+			}
+
 			.prepEditor {
 				font-size: 1.5rem;
 				// CKEditor
@@ -128,6 +137,7 @@
 		height: 170px;
 	}
 }
+
 .smallInputs {
 	min-width: 330px;
 	height: 850px;

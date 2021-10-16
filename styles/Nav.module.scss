@@ -100,14 +100,15 @@
 		li {
 			padding: 0.4em 0.2em;
 			font-size: 1.5rem;
+			border-bottom: 1px solid lightblue;
+
 			&:hover {
 				background: rgb(98, 230, 253);
 				color: navy;
 			}
 		}
-		.midLi {
-			border-top: 1px solid lightblue;
-			border-bottom: 1px solid lightblue;
+		li:last-child {
+			border-bottom: none;
 		}
 	}
 }

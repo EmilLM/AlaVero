@@ -1,22 +1,18 @@
 import styles from '../../styles/ConfirmationModal.module.scss';
 import Loader from '../general/Loader';
 import { useRouter } from 'next/router';
-import { useClickOutside } from '../../src/utils/hooks';
 
 import { MdDelete } from 'react-icons/md';
 import { CgCloseR } from 'react-icons/cg';
 import { BiMessageAltError } from 'react-icons/bi';
 import { FiHome, FiRefreshCw } from 'react-icons/fi';
 
-const ConfirmationModal = ({
-	setConfirmDelete,
-	eraseRecipe,
-	isLoading,
-	error,
-}) => {
+const ConfirmationModal = (props) => {
+	const { setConfirmDelete, eraseRecipe, isLoading, error } = props;
 	const router = useRouter();
+
 	return (
-		<div className={styles.overlay} onClick={() => setConfirmDelete(false)}>
+		<div className={styles.overlay}>
 			<div className={styles.modal}>
 				<button
 					className={styles.close}

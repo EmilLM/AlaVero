@@ -6,6 +6,7 @@ import { PostRecipe, UpdateRecipe } from '../../src/gql/mutations.graphql';
 import { request } from 'graphql-request';
 import { useRouter } from 'next/router';
 import { index } from '../../src/services/algolia-search';
+import FormTooltip from '../general/FormTooltip';
 
 // try using react-hook-form
 const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
@@ -129,10 +130,14 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 			<section className={styles.smallInputs}>
 				<div className={styles.textInputs}>
 					<label htmlFor='name'>
-						<di className={styles.labelInfo}>
+						<div className={styles.labelInfo}>
 							<p>Denumire:</p>
-							<span>?</span>
-						</di>
+							<FormTooltip
+								title={'Numele retetei'}
+								infoOne={'Minim 3 caractere lungime'}
+								infoTwo={'Max 30 caractere.'}
+							/>
+						</div>
 						<input
 							type='text'
 							name='name'
@@ -141,7 +146,13 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 						/>
 					</label>
 					<label htmlFor='addedBy'>
-						Adaugata de:
+						<div className={styles.labelInfo}>
+							<p>Adaugata de:</p>
+							<FormTooltip
+								title={'De cine a fost creata/adaugata reteta'}
+								infoOne={'Poti inlocui Vero cu numele tau.'}
+							/>
+						</div>
 						<input
 							type='text'
 							name='addedBy'
@@ -150,7 +161,14 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 						/>
 					</label>
 					<label htmlFor='cooking'>
-						Mod Gatire:
+						<div className={styles.labelInfo}>
+							<p>Mod Gatire:</p>
+							<FormTooltip
+								title={'Informatii despre gatire'}
+								infoOne={'Detalii cuptor: temperatura, raft, program, durata'}
+								infoTwo={'Detalii foc: intensitate, durata etc.'}
+							/>
+						</div>
 						<input
 							type='text'
 							name='cooking'
@@ -206,7 +224,14 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 
 			<section className={styles.largeInputs}>
 				<label htmlFor='ingredients'>
-					Ingrediente:
+					<div className={styles.labelInfo}>
+						<p>Ingrediente:</p>
+						<FormTooltip
+							title={'Ingredientele folosite'}
+							infoOne={'Model: Cantitate + ingredient + virgula.'}
+							infoTwo={'Ex: 1 cupa faina, 0.5l lapte, 300ml apa'}
+						/>
+					</div>
 					<textarea
 						type='text'
 						name='ingredients'
@@ -215,7 +240,17 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 					/>
 				</label>
 				<div className={styles.editor}>
-					<h6>Preparare:</h6>
+					<div className={styles.labelInfo}>
+						<h6>Preparare:</h6>
+						<FormTooltip
+							title={'Pasii de preparare'}
+							infoOne={'Urmeaza modelul altor retete.'}
+							infoTwo={'Separa preparea in pasi!'}
+							infoThree={
+								'La final, selecteaza tot textul si apasa penultimul buton!'
+							}
+						/>
+					</div>
 					<PrepEditor
 						recipePrep={preparation}
 						handleChange={handleEditorChange}

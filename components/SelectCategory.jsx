@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from '../styles/Nav.module.scss';
 import { FaArrowAltCircleDown } from 'react-icons/fa';
 import { useClickOutside } from '../src/utils/hooks';
@@ -24,12 +24,8 @@ const SelectMenu = ({ currentRefinement, refine, items }) => {
 					<ul>
 						<li onClick={() => refine('')}>Toate</li>
 
-						<li onClick={() => refine('Prajitura')} className={styles.midLi}>
-							Prajituri
-						</li>
-						<li onClick={() => refine('Mancare')} className={styles.midLi}>
-							Mancare
-						</li>
+						<li onClick={() => refine('Prajitura')}>Prajituri</li>
+						<li onClick={() => refine('Mancare')}>Mancare</li>
 						<li onClick={() => refine('Sos')}>Sosuri</li>
 					</ul>
 				</div>
