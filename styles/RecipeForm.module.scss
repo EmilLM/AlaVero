@@ -7,10 +7,12 @@
 
 .formContainer {
 	width: 80%;
+	padding: 0 1vw;
 	display: flex;
 	flex-direction: column;
 	// justify-content: space-evenly;
 	margin: 0 auto;
+	margin-bottom: 1em;
 	width: 100%;
 	@media screen and (min-width: 450px) and (max-width: 766px) {
 		width: 85%;
@@ -29,9 +31,19 @@
 		label {
 			display: flex;
 			flex-direction: column;
+			position: relative;
+
 			@include fontStyles();
 			.labelInfo {
 				display: flex;
+				span {
+					margin-left: 20px;
+					color: black;
+					text-transform: none;
+					position: absolute;
+					top: 55%;
+					right: 10px;
+				}
 			}
 		}
 		input {

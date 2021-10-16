@@ -13,8 +13,12 @@ const recipeSchema = new mongoose.Schema({
 		// 	'Numele trebuie sa contina doar litere si cifre!',
 		// ],
 	},
-	addedBy: { type: String },
-	type: { type: String, required: true, default: 'Mancare' },
+	addedBy: {
+		type: String,
+		minLength: [3, 'Numele trebuie sa fie de minim 3 caractere!'],
+		maxLength: [15, 'Numele trebuie sa fie de max 15 caractere!'],
+	},
+	type: { type: String, default: 'Mancare' },
 	favorite: {
 		type: Boolean,
 		default: false,
@@ -23,9 +27,9 @@ const recipeSchema = new mongoose.Schema({
 		type: String,
 		default: 'placeholder.png',
 	},
-	cooking: { type: String },
-	ingredients: { type: [String] },
-	preparation: { type: String },
+	cooking: { type: String, required: true },
+	ingredients: { type: [String], required: true },
+	preparation: { type: String, required: true },
 	createdAt: {
 		type: Date,
 		default: Date.now(),

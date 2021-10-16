@@ -137,6 +137,9 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 								infoOne={'Minim 3 caractere lungime'}
 								infoTwo={'Max 30 caractere.'}
 							/>
+							{name.length > 0 && (
+								<span>{30 - name.length > 0 ? 30 - name.length : 0}</span>
+							)}
 						</div>
 						<input
 							type='text'
