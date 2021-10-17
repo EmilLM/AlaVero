@@ -2,7 +2,8 @@ import { useContext } from 'react';
 import styles from '../../styles/RecipeContent.module.scss';
 import Image from 'next/image';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
-
+import { FaYoutube } from 'react-icons/fa';
+import { BiLinkExternal } from 'react-icons/bi';
 import Ingredient from '../Ingredient';
 import RecipeForm from '../newRecipe/RecipeForm';
 import ReactHtmlParser from 'react-html-parser';
@@ -23,12 +24,42 @@ const RecipeContent = ({ editRecipe, setEditRecipe }) => {
 			</>
 		);
 
-	const { ingredients, img, cooking, preparation, favorite, type, addedBy } =
-		recipe;
+	const {
+		ingredients,
+		img,
+		cooking,
+		preparation,
+		favorite,
+		type,
+		addedBy,
+		references,
+	} = recipe;
 
 	const ingredientsArr = ingredients?.map((ingredient, index) => (
 		<Ingredient ingredient={ingredient} key={index} />
 	));
+
+	const referencesArr = references?.map((reference, idx) => {
+		let element;
+		if (reference.includes('youtube')) {
+			element = (
+				<a href={reference} target='_blank' key={idx}>
+					Video link -
+					<FaYoutube />
+				</a>
+			);
+		} else if (!reference.includes('youtube') && reference.includes('http')) {
+			element = (
+				<a href={reference} target='_blank' key={idx}>
+					Link extern -
+					<BiLinkExternal />
+				</a>
+			);
+		} else {
+			element = <p key={idx}>{reference}</p>;
+		}
+		return element;
+	});
 
 	return (
 		<>
@@ -64,6 +95,12 @@ const RecipeContent = ({ editRecipe, setEditRecipe }) => {
 
 					<p>{cooking}</p>
 				</div>
+				{references.length > 0 && (
+					<div className={styles.references}>
+						<h6>Detalii/Link:</h6>
+						{referencesArr}
+					</div>
+				)}
 			</div>
 		</>
 	);

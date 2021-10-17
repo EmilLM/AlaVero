@@ -30,6 +30,7 @@ const recipeSchema = new mongoose.Schema({
 	cooking: { type: String, required: true },
 	ingredients: { type: [String], required: true },
 	preparation: { type: String, required: true },
+	references: [String],
 	createdAt: {
 		type: Date,
 		default: Date.now(),

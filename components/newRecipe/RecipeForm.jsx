@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
-import styles from '../../styles/RecipeForm.module.scss';
-import PrepEditor from './RecipePrepEditor';
 import Image from 'next/image';
+import styles from '../../styles/RecipeForm.module.scss';
+
 import { PostRecipe, UpdateRecipe } from '../../src/gql/mutations.graphql';
 import { request } from 'graphql-request';
 import { useRouter } from 'next/router';
 import { index } from '../../src/services/algolia-search';
+
 import FormTooltip from '../general/FormTooltip';
+import PrepEditor from './RecipePrepEditor';
 
 // try using react-hook-form
 const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
@@ -19,6 +21,7 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 		ingredients: recipe?.ingredients ?? '',
 		preparation: recipe?.preparation ?? '',
 		cooking: recipe?.cooking ?? '',
+		references: recipe?.references ?? '',
 	});
 
 	const [fileInput, setFileInput] = useState('placeholder.png');
@@ -32,6 +35,7 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 		ingredients,
 		preparation,
 		cooking,
+		references,
 	} = formState;
 
 	useEffect(() => {
@@ -86,11 +90,17 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 			type: e.target.value,
 		});
 	}
-
+	function handleReferences(e) {
+		setFormState({
+			...formState,
+			references: e.target.value.split(','),
+		});
+	}
 	const router = useRouter();
 	const handleSubmit = async (e) => {
 		try {
 			e.preventDefault();
+			console.log(formState);
 			const { newRecipe } = await request(
 				'http://localhost:3000/api/graphql',
 				PostRecipe,
@@ -146,6 +156,7 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 							name='name'
 							value={name}
 							onChange={handleChange}
+							maxLength='30'
 						/>
 					</label>
 					<label htmlFor='addedBy'>
@@ -161,6 +172,7 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 							name='addedBy'
 							value={addedBy}
 							onChange={handleChange}
+							maxLength='15'
 						/>
 					</label>
 					<label htmlFor='cooking'>
@@ -259,6 +271,23 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 						handleChange={handleEditorChange}
 					/>
 				</div>
+
+				<label htmlFor='references'>
+					<div className={styles.labelInfo}>
+						<p>Alte referinte:</p>
+						<FormTooltip
+							title={'Alte info / linkuri'}
+							infoOne={'Adauga linkuri, video sau alte detalli.'}
+							infoTwo={'Separa fiecare informatie/link cu virgula!'}
+						/>
+					</div>
+					<textarea
+						type='text'
+						name='references'
+						value={references}
+						onChange={handleReferences}
+					/>
+				</label>
 
 				<button
 					type='submit'

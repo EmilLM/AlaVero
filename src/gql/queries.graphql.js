@@ -23,6 +23,7 @@ export const RecipePageQuery = `
 			cooking
 			preparation
 			ingredients
+			references
 			id
 		}
 	}

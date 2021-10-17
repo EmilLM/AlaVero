@@ -7,6 +7,9 @@ add burger menu option on small screens and when scroll down
 
 add security : secure inputs, requests limiter etc check chataway
 add data loading & errors ui
-adauga la reteta o sectiune pentru alte info/detalii/referinte
+limit localStorage on newRecipe to 1 day;
+localStorage should only save inputs after name is filled in or just dont bother and remove it after 1 day
 
-MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 open listeners added to [NativeConnection]. Use emitter.setMaxListeners() to increase limit 
+(node:7396) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 SIGINT listeners added to [process]. Use emitter.setMaxListeners() to increase limit
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7396) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 SIGTERM listeners added to [process]. Use emitter.setMaxListeners() to increase limit
