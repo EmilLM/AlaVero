@@ -11,6 +11,22 @@ import { RecipeContext } from '../general/recipe.context';
 
 const RecipeContent = ({ editRecipe, setEditRecipe }) => {
 	const { recipe } = useContext(RecipeContext);
+	const {
+		ingredients,
+		img,
+		cooking,
+		preparation,
+		favorite,
+		type,
+		addedBy,
+		references,
+	} = recipe;
+	if (!recipe)
+		return (
+			<div className={styles.noRecipe}>
+				Reteta nu este valabila! Incercati mai tarziu.
+			</div>
+		);
 	if (editRecipe)
 		return (
 			<>
@@ -23,17 +39,6 @@ const RecipeContent = ({ editRecipe, setEditRecipe }) => {
 				/>
 			</>
 		);
-
-	const {
-		ingredients,
-		img,
-		cooking,
-		preparation,
-		favorite,
-		type,
-		addedBy,
-		references,
-	} = recipe;
 
 	const ingredientsArr = ingredients?.map((ingredient, index) => (
 		<Ingredient ingredient={ingredient} key={index} />

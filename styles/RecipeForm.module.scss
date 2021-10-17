@@ -118,7 +118,7 @@
 		}
 
 		.submitButton {
-			margin-top: 30px;
+			margin: 30px 0;
 			font-size: 1.5rem;
 			width: 50%;
 			height: 50px;
@@ -223,5 +223,19 @@
 				box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 			}
 		}
+	}
+}
+
+.error {
+	color: red;
+	min-width: 250px;
+	margin-top: 40px;
+	text-align: center;
+	h5 {
+		font-size: 1.5rem;
+		font-weight: bold;
+	}
+	p {
+		font-size: 1.3rem;
 	}
 }

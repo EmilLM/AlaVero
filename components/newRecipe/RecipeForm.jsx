@@ -25,7 +25,7 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 	});
 
 	const [fileInput, setFileInput] = useState('placeholder.png');
-
+	const [error, setError] = useState(null);
 	const {
 		name,
 		addedBy,
@@ -49,6 +49,12 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 			JSON.stringify(formState)
 		);
 	}, [formState]);
+
+	useEffect(() => {
+		return () => {
+			return localStorage.removeItem(recipe?.name);
+		};
+	});
 
 	const isValid = name && ingredients && cooking;
 
@@ -100,7 +106,7 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 	const handleSubmit = async (e) => {
 		try {
 			e.preventDefault();
-			console.log(formState);
+			setError(false);
 			const { newRecipe } = await request(
 				'http://localhost:3000/api/graphql',
 				PostRecipe,
@@ -111,11 +117,13 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 			router.push('/recipes/' + newRecipe.name);
 		} catch (err) {
 			console.error('formError', err);
+			setError(true);
 		}
 	};
 	const handleEditSubmit = async (e) => {
 		try {
 			e.preventDefault();
+			setError(false);
 			const { updateRecipe } = await request(
 				'http://localhost:3000/api/graphql',
 				UpdateRecipe,
@@ -130,6 +138,7 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 			setEditRecipe(false);
 		} catch (err) {
 			console.error('edit form error:', err);
+			setError(true);
 		}
 	};
 	return (
@@ -277,8 +286,9 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 						<p>Alte referinte:</p>
 						<FormTooltip
 							title={'Alte info / linkuri'}
-							infoOne={'Adauga linkuri, video sau alte detalli.'}
-							infoTwo={'Separa fiecare informatie/link cu virgula!'}
+							infoOne={'Optional!'}
+							infoTwo={'Adauga linkuri, video sau alte detalli.'}
+							infoThree={'Separa fiecare informatie/link cu virgula!'}
 						/>
 					</div>
 					<textarea
@@ -288,7 +298,16 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 						onChange={handleReferences}
 					/>
 				</label>
-
+				{error && (
+					<div className={styles.error}>
+						<h5>Eroare!</h5>
+						<p>Reteta nu a putut fi creata!</p>
+						<p>
+							Umple toate casutele cu informatiile corespunzatoare sau incearca
+							mai tarziu.
+						</p>
+					</div>
+				)}
 				<button
 					type='submit'
 					className={styles.submitButton}
