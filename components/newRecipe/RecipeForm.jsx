@@ -21,7 +21,7 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 		ingredients: recipe?.ingredients ?? '',
 		preparation: recipe?.preparation ?? '',
 		cooking: recipe?.cooking ?? '',
-		references: recipe?.references ?? '',
+		references: recipe?.references ?? [],
 	});
 
 	const [fileInput, setFileInput] = useState('placeholder.png');

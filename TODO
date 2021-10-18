@@ -3,7 +3,7 @@ add ingredients one by one
 react virtualized / lazy load recipes || limit(pagination) on graphql
 
 add favorite/unfavorite option on card!
-add burger menu option on small screens and when scroll down 
+
 
 add security : secure inputs, requests limiter etc check chataway
 
@@ -11,3 +11,7 @@ add security : secure inputs, requests limiter etc check chataway
 (node:7396) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 SIGINT listeners added to [process]. Use emitter.setMaxListeners() to increase limit
 (Use `node --trace-warnings ...` to show where the warning was created)
 (node:7396) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 SIGTERM listeners added to [process]. Use emitter.setMaxListeners() to increase limit
+
+used process.setMaxListeners(0) in graphql api  || had 10+ db ready and memory increased
+
+ Image with src "/ph.jpg" may not render properly with a parent using position:"static". Consider changing the parent style to position:"relative" with a width and height.

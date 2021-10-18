@@ -20,10 +20,11 @@ const RecipeCard = ({ hit }) => {
 						src={'/' + img}
 						alt='ph'
 						layout='fill'
+						priority
+
 						// placeholder='blur'
 						// blurDataURL={'/' + img}
 						// loading='lazy'
-						priority
 					/>
 				</div>
 				<div className={styles.cardInfo}>

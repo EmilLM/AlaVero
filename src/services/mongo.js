@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 
 const DB = process.env.DB_URI;
 
+
 mongoose.connection.once('open', () => console.log('DB ready!'));
 mongoose.connection.on('error', (err) => console.error(err));
 

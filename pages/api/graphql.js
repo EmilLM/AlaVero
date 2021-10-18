@@ -4,6 +4,8 @@ import { resolvers } from '../../src/resolvers/resolvers.graphql';
 
 import fs from 'fs';
 import path from 'path';
+	
+process.setMaxListeners(0);
 
 const typeDefs = fs.readFileSync(
 	path.join(__dirname, '../../../../src/schemas', 'schema.graphql'),

@@ -52,7 +52,7 @@ export default function Home({ allRecipes }) {
 	);
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 	const { getRecipes } = await request(
 		'http://localhost:3000/api/graphql',
 		RecipeCardQuery
