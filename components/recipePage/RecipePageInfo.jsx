@@ -28,7 +28,7 @@ const RecipePageInfo = () => {
 			setIsLoading(true);
 
 			await request(
-				'http://localhost:3000/api/graphql',
+				// 'http://localhost:3000/api/graphql',
 				`${window.location.origin}/api/graphql`,
 				DeleteRecipe,
 				{
