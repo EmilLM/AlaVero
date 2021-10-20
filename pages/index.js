@@ -54,8 +54,8 @@ export default function Home({ allRecipes }) {
 	);
 }
 
-export async function getStaticProps({ req }) {
-	console.log(req.headers.host)
+export async function getServerSideProps({ req }) {
+	console.log(req?.headers.host);
 	const { getRecipes } = await request(
 		// 'http://localhost:3000/api/graphql',
 		`https://${req.headers.host}/api/graphql`,

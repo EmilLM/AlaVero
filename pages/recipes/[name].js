@@ -23,6 +23,8 @@ export async function getServerSideProps({ req, params }) {
 	console.log(req.headers.host)
 	const variables = { name: params.name };
 	const { getRecipe } = await request(
+		// 'http://localhost:3000/api/graphql',
+
 		`https://${req.headers.host}/api/graphql`,
 		RecipePageQuery,
 		variables
