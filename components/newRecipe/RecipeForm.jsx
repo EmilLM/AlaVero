@@ -108,7 +108,9 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 			e.preventDefault();
 			setError(false);
 			const { newRecipe } = await request(
-				'http://localhost:3000/api/graphql',
+				// 'http://localhost:3000/api/graphql',
+				`https://${window.location.href}/api/graphql`,
+
 				PostRecipe,
 				{ input: formState }
 			);
@@ -125,7 +127,8 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 			e.preventDefault();
 			setError(false);
 			const { updateRecipe } = await request(
-				'http://localhost:3000/api/graphql',
+				// 'http://localhost:3000/api/graphql',
+				`https://${window.location.href}/api/graphql`,
 				UpdateRecipe,
 				{ updateRecipeName: recipe.name, updateRecipeInput: formState }
 			);
