@@ -23,7 +23,7 @@ export default RecipePage;
 export async function getServerSideProps({ params }) {
 	const variables = { name: params.name };
 	const { getRecipe } = await request(
-		'http://localhost:3000/api/graphql',
+		'https://cookbook-blue.vercel.app/api/graphql',
 		RecipePageQuery,
 		variables
 	);
