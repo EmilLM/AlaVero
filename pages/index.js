@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { request } from 'graphql-request';
 import { useState, useRef, useEffect } from 'react';
-
+import { useQuery } from '@apollo/client';
 import { InstantSearch } from 'react-instantsearch-dom';
 import { algoliaClient, index } from '../src/services/algolia-search';
 
@@ -22,6 +22,8 @@ export default function Home({ allRecipes }) {
 		// required for ui updates of index
 		algoliaClient.clearCache();
 	}, []);
+
+	// const { loading, error, data } = useQuery(RecipeCardQuery, { ssr: true });
 
 	return (
 		<>
@@ -53,11 +55,11 @@ export default function Home({ allRecipes }) {
 }
 
 export async function getServerSideProps({ req }) {
-
 	const { getRecipes } = await request(
-		'https://api.vercel.com/api/graphql',
+		`https://${req.headers.post}/api/graphql`,
 		RecipeCardQuery
 	);
+
 	getRecipes.map((recipe) => {
 		recipe.objectID = recipe.id;
 	});
