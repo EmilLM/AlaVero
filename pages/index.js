@@ -53,9 +53,9 @@ export default function Home({ allRecipes }) {
 }
 
 export async function getServerSideProps({ req }) {
-	
+
 	const { getRecipes } = await request(
-		`${req.headers.host}/api/graphql`,
+		'https://api.vercel.com/api/graphql',
 		RecipeCardQuery
 	);
 	getRecipes.map((recipe) => {
