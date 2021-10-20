@@ -109,7 +109,7 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 			setError(false);
 			const { newRecipe } = await request(
 				// 'http://localhost:3000/api/graphql',
-				`${window.location.href}/api/graphql`,
+				`${window.location.origin}/api/graphql`,
 
 				PostRecipe,
 				{ input: formState }
@@ -128,7 +128,7 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 			setError(false);
 			const { updateRecipe } = await request(
 				// 'http://localhost:3000/api/graphql',
-				`${window.location.href}/api/graphql`,
+				`${window.location.origin}/api/graphql`,
 				UpdateRecipe,
 				{ updateRecipeName: recipe.name, updateRecipeInput: formState }
 			);
