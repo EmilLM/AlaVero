@@ -26,9 +26,15 @@ const RecipePageInfo = () => {
 	const eraseRecipe = async () => {
 		try {
 			setIsLoading(true);
-			await request('http://localhost:3000/api/graphql', DeleteRecipe, {
-				recipeName: recipe.name,
-			});
+
+			await request(
+				'http://localhost:3000/api/graphql',
+				`${window.location.href}/api/graphql`,
+				DeleteRecipe,
+				{
+					recipeName: recipe.name,
+				}
+			);
 			await index.deleteObject(recipe.id).wait();
 			localStorage.removeItem(recipe.name);
 			setConfirmDelete(false);
