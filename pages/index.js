@@ -56,7 +56,7 @@ export default function Home({ allRecipes }) {
 
 export async function getServerSideProps({ req }) {
 	const { getRecipes } = await request(
-		`https://${req.headers.post}/api/graphql`,
+		`https://${req?.headers.host}/api/graphql`,
 		RecipeCardQuery
 	);
 
