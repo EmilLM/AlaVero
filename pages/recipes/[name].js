@@ -20,10 +20,10 @@ const RecipePage = ({ recipe }) => {
 export default RecipePage;
 
 // use ssprops with graphql to get the recipe by name
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ req, params }) {
 	const variables = { name: params.name };
 	const { getRecipe } = await request(
-		'http://localhost:3000/api/graphql',
+		`https://${req.headers.host}/api/graphql`,
 		RecipePageQuery,
 		variables
 	);
