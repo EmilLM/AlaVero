@@ -108,7 +108,7 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 			e.preventDefault();
 			setError(false);
 			const { newRecipe } = await request(
-				'https://cookbook-blue.vercel.app/api/graphql',
+				'http://localhost:3000/api/graphql',
 				PostRecipe,
 				{ input: formState }
 			);
@@ -125,7 +125,7 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 			e.preventDefault();
 			setError(false);
 			const { updateRecipe } = await request(
-				'https://cookbook-blue.vercel.app/api/graphql',
+				'http://localhost:3000/api/graphql',
 				UpdateRecipe,
 				{ updateRecipeName: recipe.name, updateRecipeInput: formState }
 			);

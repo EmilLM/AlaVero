@@ -52,9 +52,10 @@ export default function Home({ allRecipes }) {
 	);
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ req }) {
+	
 	const { getRecipes } = await request(
-		'https://cookbook-blue.vercel.app/api/graphql',
+		`${req.headers.host}/api/graphql`,
 		RecipeCardQuery
 	);
 	getRecipes.map((recipe) => {
