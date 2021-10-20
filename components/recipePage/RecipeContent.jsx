@@ -48,14 +48,14 @@ const RecipeContent = ({ editRecipe, setEditRecipe }) => {
 		let element;
 		if (reference.includes('youtube')) {
 			element = (
-				<a href={reference} target='_blank' key={idx}>
+				<a href={reference} target='_blank' key={idx} rel="noreferrer">
 					Video link -
 					<FaYoutube />
 				</a>
 			);
 		} else if (!reference.includes('youtube') && reference.includes('http')) {
 			element = (
-				<a href={reference} target='_blank' key={idx}>
+				<a href={reference} target='_blank' key={idx} rel="noreferrer">
 					Link extern -
 					<BiLinkExternal />
 				</a>

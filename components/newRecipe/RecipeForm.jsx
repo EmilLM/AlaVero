@@ -48,13 +48,13 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 			editRecipe ? recipe?.name : 'newRecipe',
 			JSON.stringify(formState)
 		);
-	}, [formState]);
+	}, [formState, editRecipe, recipe?.name]);
 
 	useEffect(() => {
 		return () => {
 			return localStorage.removeItem(recipe?.name);
 		};
-	});
+	}, [recipe?.name]);
 
 	const isValid = name && ingredients && cooking;
 
@@ -232,7 +232,7 @@ const RecipeForm = ({ recipe, editRecipe, setEditRecipe }) => {
 						/>
 						<div className={styles.imgBox}>
 							{/* change state & Image comp */}
-							<img
+							<Image
 								src={
 									fileInput === 'placeholder.png'
 										? '/placeholder.png'

@@ -211,6 +211,8 @@
 			max-width: 350px;
 			min-width: 200px;
 			margin-top: 20px;
+			height: 250px;
+			width: 350px;
 			@media screen and (min-width: 900px) {
 				margin-top: 0;
 				width: 50%;
@@ -218,6 +220,8 @@
 
 			img {
 				max-height: 300px;
+				height: 250px;
+				width: 350px;
 				max-width: 350px;
 				border-radius: 4px;
 				box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
