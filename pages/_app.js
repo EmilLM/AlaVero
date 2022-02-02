@@ -1,13 +1,25 @@
 import '../styles/globals.scss';
 import '../styles/customLibStyles.scss';
-import { ApolloProvider } from '@apollo/client';
-import {client} from '../src/services/apollo-client';
+import {Suspense} from 'react';
+import { RecipePageQuery } from '../src/gql/getRecipeQuery';
+
+
+import {
+	RelayEnvironmentProvider,
+	loadQuery,
+  } from 'react-relay/hooks';
+  import RelayEnvironment from '../src/services/relay-environment';
+
+const preloadedQuery = loadQuery(RelayEnvironment, RecipePageQuery, {
+	name: 'sos marinara'
+});
+ 
 
 function MyApp({ Component, pageProps }) {
 	return (
-		<ApolloProvider client={client}>
-			<Component {...pageProps} />
-		</ApolloProvider>
+		<RelayEnvironmentProvider environment={RelayEnvironment}>
+				<Component preloadedQuery={preloadedQuery} {...pageProps} />
+		</RelayEnvironmentProvider>
 	);
 }
 
