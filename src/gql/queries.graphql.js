@@ -16,7 +16,7 @@
 
 // export const RecipePageQuery = graphql`
 // 	query getRecipeQuery($name: String!) {
-// 		getRecipeQuery(name: $name) {
+// 		getRecipe(name: $name) {
 // 			name
 // 			img
 // 			type

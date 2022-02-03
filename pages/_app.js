@@ -1,7 +1,7 @@
 import '../styles/globals.scss';
 import '../styles/customLibStyles.scss';
-import {Suspense} from 'react';
-import { RecipePageQuery } from '../src/gql/getRecipeQuery';
+// import {Suspense} from 'react';
+import { RecipeCardQuery } from '../src/gql/getRecipesQuery';
 
 
 import {
@@ -10,15 +10,13 @@ import {
   } from 'react-relay/hooks';
   import RelayEnvironment from '../src/services/relay-environment';
 
-const preloadedQuery = loadQuery(RelayEnvironment, RecipePageQuery, {
-	name: 'sos marinara'
-});
+const preloadedQuery = loadQuery(RelayEnvironment, RecipeCardQuery);
  
 
 function MyApp({ Component, pageProps }) {
 	return (
 		<RelayEnvironmentProvider environment={RelayEnvironment}>
-				<Component preloadedQuery={preloadedQuery} {...pageProps} />
+			<Component {...pageProps} preloadedQuery={preloadedQuery} />
 		</RelayEnvironmentProvider>
 	);
 }
