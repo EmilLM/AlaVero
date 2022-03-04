@@ -2,10 +2,11 @@
 import {Environment, Network, RecordSource, Store, Observable} from 'relay-runtime';
 
 const fetchGraphQL = async (text, variables) => {
-    const response = await fetch('http://localhost:3000/api/graphql', {
+    const response = await fetch('https://hasura-frontend.h4k.co/v1/graphql', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'x-hasura-admin-secret': 'adminsecret'
     },
     body: JSON.stringify({
       query: text,

@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const RecipeCard = ({ hit }) => {
 	const { name, favorite, img, addedBy } = hit;
-
+	
 	function handleFavorite(e) {
 		e.stopPropagation();
 		setIsFavorite((prevState) => !prevState);

@@ -4,10 +4,11 @@ import { useState, useRef, useEffect } from 'react';
 import { InstantSearch } from 'react-instantsearch-dom';
 import { algoliaClient, index } from '../src/services/algolia-search';
 
-import { loadQuery, RelayEnvironmentProvider } from 'react-relay/hooks';
+import { usePreloadedQuery,loadQuery, RelayEnvironmentProvider } from 'react-relay/hooks';
 import RelayEnvironment from '../src/services/relay-environment';
 
-import { RecipeCardQuery } from '../src/gql/getRecipesQuery';
+import { RecipeCardQuery } from '../src/gql/getRecipes';
+import { BasicResponseQuery } from '../src/gql/getBasic';
 
 import Layout from '../components/general/Layout';
 import Nav from '../components/Nav';
@@ -23,9 +24,13 @@ const Test = dynamic(() => import("../components/Test"), {
 	ssr: false,
   });
 
-// const preloadedQuery = loadQuery(RelayEnvironment, RecipeCardQuery);
+const preloadedQuery = loadQuery(RelayEnvironment, BasicResponseQuery);
 
-export default function Home({preloadedQuery}) {
+export default function Home() {
+
+	useEffect(()=>{
+		console.log(preloadedQuery)
+	})
 
 	return (
 		<>
@@ -35,15 +40,15 @@ export default function Home({preloadedQuery}) {
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			{/* <RelayEnvironmentProvider environment={RelayEnvironment}> */}
+			<RelayEnvironmentProvider environment={RelayEnvironment}>
 				<Test preloadedQuery={preloadedQuery}/>
-			{/* </RelayEnvironmentProvider> */}
+			</RelayEnvironmentProvider>
 		</>
 	);
 }
 
 export async function getServerSideProps({ req }) {
-	console.log(req?.headers.host);
+	// console.log(req?.headers.host);
 
 	// const { getRecipes } = await request(
 	// 	'http://localhost:3000/api/graphql',

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<96e922c20ccbab3af6273fc2adb0dd8b>>
+ * @generated SignedSource<<37dfeca0372b62ffeefb6c3ff7cee328>>
  * @flow
  * @lightSyntaxTransform
  * @nogrep
@@ -15,13 +15,13 @@ export type getRecipesQuery$variables = {||};
 export type getRecipesQueryVariables = getRecipesQuery$variables;
 export type getRecipesQuery$data = {|
   +getRecipes: $ReadOnlyArray<{|
-    +name: string,
-    +favorite: ?boolean,
-    +addedBy: ?string,
     +type: string,
-    +img: ?string,
     +id: ?string,
     +createdAt: ?any,
+    +img: ?string,
+    +addedBy: ?string,
+    +name: string,
+    +favorite: ?boolean,
   |}>,
 |};
 export type getRecipesQueryResponse = getRecipesQuery$data;
@@ -45,35 +45,7 @@ var v0 = [
         "alias": null,
         "args": null,
         "kind": "ScalarField",
-        "name": "name",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "favorite",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "addedBy",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
         "name": "type",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "img",
         "storageKey": null
       },
       {
@@ -88,6 +60,34 @@ var v0 = [
         "args": null,
         "kind": "ScalarField",
         "name": "createdAt",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "img",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "addedBy",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "name",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "favorite",
         "storageKey": null
       }
     ],
@@ -112,17 +112,17 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "2eee172c310e764ea10232412a604e77",
+    "cacheID": "9aca4a244ad8250141d5c21596a7a246",
     "id": null,
     "metadata": {},
     "name": "getRecipesQuery",
     "operationKind": "query",
-    "text": "query getRecipesQuery {\n  getRecipes {\n    name\n    favorite\n    addedBy\n    type\n    img\n    id\n    createdAt\n  }\n}\n"
+    "text": "query getRecipesQuery {\n  getRecipes {\n    type\n    id\n    createdAt\n    img\n    addedBy\n    name\n    favorite\n  }\n}\n"
   }
 };
 })();
 
-(node/*: any*/).hash = "23ca1f9a2923d5a5e795e7fdc7f13161";
+(node/*: any*/).hash = "7b742968a467057c5680011da3192c4e";
 
 module.exports = ((node/*: any*/)/*: Query<
   getRecipesQuery$variables,
