@@ -4,33 +4,32 @@ import { useState, useRef, useEffect } from 'react';
 import { InstantSearch } from 'react-instantsearch-dom';
 import { algoliaClient, index } from '../src/services/algolia-search';
 
-import { usePreloadedQuery,loadQuery, RelayEnvironmentProvider } from 'react-relay/hooks';
-import RelayEnvironment from '../src/services/relay-environment';
 
-import { RecipeCardQuery } from '../src/gql/getRecipes';
-import { BasicResponseQuery } from '../src/gql/getBasic';
 
 import Layout from '../components/general/Layout';
 import Nav from '../components/Nav';
 import Recipes from '../components/Recipes';
 import styles from '../styles/Layout.module.scss';
-// import { RecipeCardQuery } from '../src/gql/queries.graphql';
 import BackTop from '../components/general/BackTop';
 
 // import Test from '../components/Test';
 import dynamic from "next/dynamic";
 
+import { usePreloadedQuery,loadQuery, RelayEnvironmentProvider } from 'react-relay/hooks';
+import RelayEnvironment from '../src/services/relay-environment';
+
+import { RecipeCardQuery } from '../src/gql/getRecipes';
+import { SessionInfoQuery } from '../src/gql/getSessionInfo';
+import { loginUsername } from '../src/gql/loginUsername';
+
 const Test = dynamic(() => import("../components/Test"), {
 	ssr: false,
   });
 
-const preloadedQuery = loadQuery(RelayEnvironment, BasicResponseQuery);
+const preloadedQuery = loadQuery(RelayEnvironment, SessionInfoQuery);
 
 export default function Home() {
 
-	useEffect(()=>{
-		console.log(preloadedQuery)
-	})
 
 	return (
 		<>
@@ -42,6 +41,7 @@ export default function Home() {
 			</Head>
 			<RelayEnvironmentProvider environment={RelayEnvironment}>
 				<Test preloadedQuery={preloadedQuery}/>
+				{/* <Test/> */}
 			</RelayEnvironmentProvider>
 		</>
 	);

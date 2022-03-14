@@ -1,33 +1,39 @@
-// your-app-name/src/RelayEnvironment.js
-import {Environment, Network, RecordSource, Store, Observable} from 'relay-runtime';
+import { Environment, Network, RecordSource, Store } from 'relay-runtime';
 
-const fetchGraphQL = async (text, variables) => {
-    const response = await fetch('https://hasura-frontend.h4k.co/v1/graphql', {
-    method: 'POST',
+const jwt= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF5ZXJfaWQiOiIxYzgzZDA1MC04ODg3LTQ0ZjgtYTQ0NS1hYjdjYTlhNWQ0ZjciLCJleHRyYSI6eyJicmFuZElEIjoiMSIsImV4dGVybmFsSUQiOiI0MDExNjk1Iiwic2Vzc2lvbklEIjoiYWNiNjlmMjktMTAwNy00OTI5LTk3NWUtMmJlYzI4MjM4MWUxIn0sImh0dHBzOi8vaGFzdXJhLmlvL2p3dC9jbGFpbXMiOnsieC1oYXN1cmEtYWxsb3dlZC1yb2xlcyI6WyJwbGF5ZXIiXSwieC1oYXN1cmEtZGVmYXVsdC1yb2xlIjoicGxheWVyIiwieC1oYXN1cmEtdXNlci1pZCI6IjFjODNkMDUwLTg4ODctNDRmOC1hNDQ1LWFiN2NhOWE1ZDRmNyJ9LCJleHAiOjE2NDczNTI1MzMsImlhdCI6MTY0NzI2MjUzM30.OW0AkJAMjGru0bOdQUXMA0OEmTYOqblAoZZDoGLTg14"
+
+// just a simple function for auth token
+// to be replaced depending on the final token storage solution
+const getJWT = () => {
+  localStorage.setItem('token', `Bearer ${jwt}`)
+  const token = localStorage.getItem('token');
+  return token ? token : '';
+};
+
+// const origin = process.env.ORIGIN 
+//               ? process.env.ORIGIN.replace('https://','') 
+//               : window.location.hostname.replace('www.','');
+        
+
+const fetchGraphQL = async (params, variables) => {
+
+  const response = await fetch('https:/api.goldwin.h4k.co/v1/graphql', {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
-      'x-hasura-admin-secret': 'adminsecret'
+      "Content-Type": "application/json",
+      'X-Hasura-Origin': 'westcasino.h4k.co',
+      'Authorization': getJWT()
     },
     body: JSON.stringify({
-      query: text,
+      query: params.text,
       variables,
     }),
   });
-
-  // Get the response as JSON
   return await response.json();
 }
 
-// Relay passes a "params" object with the query name and text. So we define a helper function
-// to call our fetchGraphQL utility with params.text.
-async function fetchRelay(params, variables) {
-//   console.log(`fetching ${params.text} with ${JSON.stringify(variables)}`);
-  return fetchGraphQL(params.text, variables);
-}
-
-
-
 export default new Environment({
-  network: Network.create(fetchRelay),
+  network: Network.create(fetchGraphQL),
   store: new Store(new RecordSource()),
 });
+
