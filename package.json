@@ -15,7 +15,7 @@
     "@ckeditor/ckeditor5-react": "^3.0.2",
     "algoliasearch": "^4.10.5",
     "apollo-server-micro": "^3.3.0",
-    "graphql": "^15.5.3",
+    "graphql": "^15.8.0",
     "graphql-request": "^3.5.0",
     "micro": "^9.3.4",
     "mongoose": "^6.0.5",
@@ -25,16 +25,16 @@
     "react-html-parser": "^2.0.2",
     "react-icons": "^4.2.0",
     "react-instantsearch-dom": "^6.12.1",
-    "react-relay": "^13.0.2",
-    "relay-runtime": "^13.0.2",
+    "react-relay": "^13.2.0",
+    "relay-runtime": "^13.2.0",
     "sass": "^1.35.1",
     "sharp": "^0.29.1",
     "validator": "^13.6.0"
   },
   "devDependencies": {
-    "babel-plugin-relay": "^13.0.2",
+    "babel-plugin-relay": "^13.2.0",
     "eslint": "7.29.0",
     "eslint-config-next": "11.0.1",
-    "relay-compiler": "^13.0.2"
+    "relay-compiler": "^13.2.0"
   }
 }

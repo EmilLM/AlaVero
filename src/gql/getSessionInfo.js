@@ -1,15 +1,15 @@
-import { graphql } from "relay-runtime";
+// import { graphql } from "relay-runtime";
 
-export const SessionInfoQuery = graphql`
-	query getSessionInfoQuery {
-		getSessionInfo {
-            brandID
-            realCountry
-            sessionID
-            spoofCountry
-            player {
-                address1
-            }
-        }
-	}
-`;
+// export const SessionInfoQuery = graphql`
+// 	query getSessionInfoQuery {
+// 		getSessionInfo {
+//             brandID
+//             realCountry
+//             sessionID
+//             spoofCountry
+//             player {
+//                 address1
+//             }
+//         }
+// 	}
+// `;

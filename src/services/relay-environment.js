@@ -17,12 +17,12 @@ const getJWT = () => {
 
 const fetchGraphQL = async (params, variables) => {
 
-  const response = await fetch('https:/api.goldwin.h4k.co/v1/graphql', {
+  const response = await fetch('http://localhost:3000/api/graphql', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      'X-Hasura-Origin': 'westcasino.h4k.co',
-      'Authorization': getJWT()
+      // 'X-Hasura-Origin': 'westcasino.h4k.co',
+      // 'Authorization': getJWT()
     },
     body: JSON.stringify({
       query: params.text,

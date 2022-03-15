@@ -1,0 +1,314 @@
+schema {
+  query: query_root
+  mutation: mutation_root
+}
+
+"""whether this query should be cached (Hasura Cloud only)"""
+directive @cached(
+  """measured in seconds"""
+  ttl: Int! = 60
+
+  """refresh the cache entry"""
+  refresh: Boolean! = false
+) on QUERY
+
+""""""
+type BasicResponse {
+  """"""
+  success: Boolean!
+}
+
+""""""
+type CheckPlayerInfo {
+  """"""
+  expiresAt: Time!
+
+  """"""
+  isActive: Boolean!
+
+  """"""
+  token: String!
+}
+
+""""""
+type GetSessionInfo {
+  """"""
+  brandID: Int!
+
+  """"""
+  player: PlayerInfo!
+
+  """"""
+  realCountry: String
+
+  """"""
+  sessionID: String!
+
+  """"""
+  spoofCountry: String
+}
+
+""""""
+type GetTags {
+  """"""
+  tags: [Tag!]!
+}
+
+""""""
+type LoginInfo {
+  """"""
+  expiresAt: Time!
+
+  """"""
+  player: PlayerInfo!
+
+  """"""
+  token: String!
+}
+
+""""""
+type PlayerInfo {
+  """"""
+  address1: String
+
+  """"""
+  address2: String
+
+  """"""
+  affiliateTag: String
+
+  """"""
+  brandID: Int!
+
+  """"""
+  city: String
+
+  """"""
+  country: String!
+
+  """"""
+  currency: String!
+
+  """"""
+  dateOfBirth: Time
+
+  """"""
+  displayName: String
+
+  """"""
+  email: String!
+
+  """"""
+  externalID: Int!
+
+  """"""
+  firstName: String
+
+  """"""
+  gender: String
+
+  """"""
+  id: String!
+
+  """"""
+  isSpoofed: Boolean!
+
+  """"""
+  isVerified: Boolean!
+
+  """"""
+  language: String
+
+  """"""
+  lastName: String
+
+  """"""
+  mobileNumber: String
+
+  """"""
+  mobileNumberPrefix: String
+
+  """"""
+  postCode: String
+
+  """"""
+  registrationDate: Time!
+
+  """"""
+  title: String
+
+  """"""
+  username: String!
+
+  """"""
+  verifiedAt: Time
+}
+
+""""""
+input RegisterInfo {
+  """"""
+  acceptNewsEmail: Boolean!
+
+  """"""
+  address1: String
+
+  """"""
+  affiliateTag: String
+
+  """"""
+  birthDate: String
+
+  """"""
+  city: String
+
+  """"""
+  currency: String!
+
+  """"""
+  email: String!
+
+  """"""
+  firstName: String
+
+  """"""
+  gender: String
+
+  """"""
+  language: String!
+
+  """"""
+  lastName: String
+
+  """"""
+  mobile: String
+
+  """"""
+  mobilePrefix: String
+
+  """"""
+  password: String!
+
+  """"""
+  postCode: String
+
+  """"""
+  securityAnswer: String
+
+  """"""
+  securityQuestion: String
+
+  """"""
+  title: String
+
+  """"""
+  username: String!
+}
+
+""""""
+type Tag {
+  """"""
+  brandID: Int!
+
+  """"""
+  description: String
+
+  """"""
+  externalID: Int!
+
+  """"""
+  id: ID!
+
+  """"""
+  name: String!
+}
+
+""""""
+scalar Time
+
+""""""
+input UpdatePlayerInfo {
+  """"""
+  address1: String!
+
+  """"""
+  address2: String
+
+  """"""
+  city: String!
+
+  """"""
+  country: String!
+
+  """"""
+  dateOfBirth: String!
+
+  """"""
+  firstName: String!
+
+  """"""
+  gender: String
+
+  """"""
+  language: String
+
+  """"""
+  lastName: String!
+
+  """"""
+  mobileNumber: String!
+
+  """"""
+  mobilePrefix: String!
+
+  """"""
+  postCode: String!
+
+  """"""
+  title: String
+}
+
+"""mutation root"""
+type mutation_root {
+  """"""
+  changePassword(currentPassword: String!, password: String!, passwordConfirmation: String!): BasicResponse!
+
+  """"""
+  confirmResetPassword(confirmPassword: String!, password: String!, token: String!): BasicResponse!
+
+  """"""
+  loginEmail(email: String!, password: String!): LoginInfo!
+
+  """"""
+  loginUsername(password: String!, username: String!): LoginInfo!
+
+  """"""
+  loginUsernameOrEmail(password: String!, usernameOrEmail: String!): LoginInfo!
+
+  """"""
+  logout: BasicResponse!
+
+  """"""
+  register(info: RegisterInfo!): LoginInfo!
+
+  """"""
+  resetPassword(email: String!): BasicResponse!
+
+  """"""
+  updatePlayerInfo(info: UpdatePlayerInfo!): BasicResponse!
+
+  """"""
+  verifyEmail(token: String!): BasicResponse!
+}
+
+type query_root {
+  """"""
+  checkPlayer: CheckPlayerInfo!
+
+  """"""
+  getSessionInfo: GetSessionInfo!
+
+  """"""
+  getTags: GetTags!
+  getBasic: BasicResponse
+}
+

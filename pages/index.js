@@ -26,7 +26,7 @@ const Test = dynamic(() => import("../components/Test"), {
 	ssr: false,
   });
 
-const preloadedQuery = loadQuery(RelayEnvironment, SessionInfoQuery);
+const preloadedQuery = loadQuery(RelayEnvironment, RecipeCardQuery);
 
 export default function Home() {
 

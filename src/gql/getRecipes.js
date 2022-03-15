@@ -1,16 +1,16 @@
-// import { graphql } from "relay-runtime";
+import { graphql } from "relay-runtime";
 
-// export const RecipeCardQuery = graphql`
-// 	query getRecipesQuery {
-// 		getRecipes {
-// 			type
-// 			id
-// 			createdAt
-// 			img,
-// 			addedBy,
-// 			name
-// 			favorite
-// 		}
-// 	}
-// `;
+export const RecipeCardQuery = graphql`
+	query getRecipesQuery {
+		getRecipes {
+			type
+			id
+			createdAt
+			img,
+			addedBy,
+			name
+			favorite
+		}
+	}
+`;
 

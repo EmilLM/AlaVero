@@ -2,7 +2,7 @@ import { Suspense, useEffect } from 'react';
 import RecipeCard from '../components/RecipeCard'
 
 import RelayEnvironment from '../src/services/relay-environment';
-import { loadQuery, usePreloadedQuery, useMutation, commitMutation } from 'react-relay';
+import { useLazyLoadQuery, usePreloadedQuery, useMutation, commitMutation } from 'react-relay';
 import { RecipeCardQuery } from '../src/gql/getRecipes';
 import { SessionInfoQuery } from '../src/gql/getSessionInfo';
 import { loginUsername } from '../src/gql/loginUsername';
@@ -24,7 +24,8 @@ import { PostRecipe } from '../src/gql/AddNewRecipe';
 
 const Test = ({preloadedQuery}) => {
 
-    const data = usePreloadedQuery(SessionInfoQuery, preloadedQuery);
+    // const data = useLazyLoadQuery(RecipeCardQuery, {});
+    const data = usePreloadedQuery(RecipeCardQuery, preloadedQuery)
     
     // const [commit, isInFlight] = useMutation(PostRecipe)
 
@@ -36,7 +37,7 @@ const Test = ({preloadedQuery}) => {
 
     return ( 
         <>
-            {/* {data.getRecipes.map(hit => <RecipeCard key={hit.id} hit={hit}/>)} */}
+            {data.getRecipes.map(hit => <RecipeCard key={hit.id} hit={hit}/>)}
 
             <h2>Test</h2>
         </>
